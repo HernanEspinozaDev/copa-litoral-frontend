@@ -1,40 +1,118 @@
 ---
 // src/pages/login.astro
 import PublicLayout from '@layouts/PublicLayout.astro';
+
+// No mostrar footer en esta página
+const hideFooter = true;
 ---
 
-<PublicLayout>
+<PublicLayout hideFooter={hideFooter}>
   <slot name="title" slot="title">Iniciar Sesión - Copa Litoral</slot>
   <slot name="description" slot="description">Panel de administración de torneos Copa Litoral</slot>
   
-  <div class="max-w-md mx-auto mt-12">
-    <h1 class="text-3xl font-bold mb-6 text-center text-primary">Iniciar Sesión</h1>
+  <div class="min-h-screen flex items-start justify-center pt-16 bg-[#E3735E] bg-opacity-90 relative overflow-hidden">
+    <!-- Fondo de cancha de tenis -->
+    <div class="absolute inset-0 bg-[#E3735E] opacity-30 z-0">
+      <!-- Líneas de la cancha -->
+      <div class="absolute inset-0 border-[20px] border-white border-opacity-30 rounded-lg m-4"></div>
+      <div class="absolute top-1/2 left-0 right-0 h-1 bg-white bg-opacity-30"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/2 border-t-2 border-b-2 border-white border-opacity-30"></div>
+    </div>
     
-    <form id="loginForm" class="bg-white p-6 rounded-lg shadow-md">
-      <div class="mb-4">
-        <label for="username" class="block text-gray-700 font-bold mb-2">Usuario</label>
-        <input type="text" id="username" name="username" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    <div class="relative z-10 w-full max-w-md px-4 pt-4 pb-8">
+      <div class="text-center mb-6">
+        <img src="/logo.webp" alt="Copa Litoral" class="h-24 mx-auto mb-4" />
+        <h1 class="text-3xl font-bold text-white">Bienvenido</h1>
+        <p class="text-white text-opacity-80">Ingresa tus credenciales para continuar</p>
       </div>
       
-      <div class="mb-6">
-        <label for="password" class="block text-gray-700 font-bold mb-2">Contraseña</label>
-        <input type="password" id="password" name="password" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
+        <div class="px-8 py-8">
+          <form id="loginForm" class="space-y-6">
+            <div>
+              <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input type="text" id="username" name="username" required 
+                  class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  placeholder="Ingresa tu usuario">
+              </div>
+            </div>
+            
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input type="password" id="password" name="password" required 
+                  class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  placeholder="••••••••">
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
+                <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                  Recordarme
+                </label>
+              </div>
+              
+              <div class="text-sm">
+                <a href="#" class="font-medium text-orange-600 hover:text-orange-500">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <button type="submit" 
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-orange-600 hover:from-blue-700 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
+                Iniciar Sesión
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="bg-gray-50 px-8 py-4 border-t border-gray-200">
+          <p class="text-xs text-center text-gray-500">
+            © 2025 Copa Litoral. Todos los derechos reservados.
+          </p>
+        </div>
       </div>
-      
-      <button type="submit" class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-        Iniciar Sesión
-      </button>
-    </form>
+    </div>
   </div>
   
   <script>
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      const formData = new FormData(e.target);
+      const form = e.target;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      
+      // Mostrar estado de carga
+      submitButton.disabled = true;
+      submitButton.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Iniciando sesión...
+      `;
+      
+      const formData = new FormData(form);
       const data = {
         username: formData.get('username'),
-        password: formData.get('password')
+        password: formData.get('password'),
+        remember: formData.get('remember-me') === 'on'
       };
       
       try {
@@ -52,11 +130,26 @@ import PublicLayout from '@layouts/PublicLayout.astro';
         if (response.ok && result.success) {
           window.location.href = result.redirectTo || '/admin/dashboard';
         } else {
-          alert(result.error || 'Credenciales inválidas');
+          // Mostrar error de manera más atractiva
+          const errorMessage = result.error || 'Credenciales inválidas';
+          const errorElement = document.createElement('div');
+          errorElement.className = 'mt-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm';
+          errorElement.textContent = errorMessage;
+          
+          // Eliminar mensajes de error anteriores
+          const existingError = form.querySelector('.error-message');
+          if (existingError) existingError.remove();
+          
+          form.prepend(errorElement);
+          errorElement.scrollIntoView({ behavior: 'smooth' });
         }
       } catch (error) {
         console.error('Error:', error);
         alert('Error de conexión: ' + error.message);
+      } finally {
+        // Restaurar botón
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
       }
     });
   </script>

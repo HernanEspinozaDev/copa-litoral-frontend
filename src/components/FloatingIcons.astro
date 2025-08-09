@@ -1,0 +1,42 @@
+---
+// src/components/FloatingIcons.astro
+
+// Número de WhatsApp con código de país (sin espacios ni caracteres especiales)
+const whatsappNumber = "56990024571"; 
+const whatsappLink = `https://wa.me/${whatsappNumber}`;
+
+// Usuario de Instagram
+const instagramUser = "lacopalitoral";
+const instagramLink = `https://instagram.com/${instagramUser}`;
+---
+
+<div class="fixed bottom-5 right-5 z-50 flex flex-col items-center gap-4">
+  <!-- Instagram -->
+  <a 
+    href={instagramLink} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label="Síguenos en Instagram"
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 via-red-500 to-purple-600 text-white shadow-lg transition-transform duration-200 ease-in-out hover:scale-110"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <rect x="4" y="4" width="16" height="16" rx="4" />
+      <circle cx="12" cy="12" r="3" />
+      <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+    </svg>
+  </a>
+
+  <!-- WhatsApp -->
+  <a 
+    href={whatsappLink} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label="Contáctanos por WhatsApp"
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform duration-200 ease-in-out hover:scale-110"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm6.44 15.21c-.25.73-1.31 1.39-2.16 1.57-.6.12-1.38.22-4.28-.81-3.2-1.15-5.25-4.06-5.4-4.24-.16-.18-1.29-1.5-1.29-2.86 0-1.36.68-2.03.93-2.29.24-.26.52-.34.68-.34.07 0 .14 0 .2.01.24.02.37.03.54.6.2.7.69 2.46.75 2.63.06.17.11.41.03.65-.08.24-.12.38-.24.56-.12.18-.26.4-.37.53-.12.14-.0.26.1.43.1.17.45.73.96 1.18.66.58 1.21.76 1.4.84.2.08.44.06.6-.1.23-.23.61-.77.77-1.04.16-.27.31-.23.52-.14.2.08 1.29.61 1.51.72.22.11.37.17.42.26.06.1.06.56-.14 1.11z"/>
+    </svg>
+  </a>
+</div>

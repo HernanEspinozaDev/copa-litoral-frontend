@@ -5,21 +5,44 @@ const title = 'Historial Copa Litoral - Torneos Finalizados';
 const description = 'Historial completo de torneos finalizados Copa Litoral con campeones, finalistas y estadísticas de tenis';
 
 // Obtener datos desde la API durante el build (SSR)
-const response = await fetch(`${Astro.url.origin}/api/tournaments-history-data`);
-const result = await response.json();
-const allTournaments = result.data || [];
+let allTournaments = [];
+try {
+  const response = await fetch(`${Astro.url.origin}/api/tournaments-history-data`);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const result = await response.json();
+  
+  // La API devuelve { success: true, data: [...] }
+  const data = result.data || [];
+  
+  // Asegurarse de que data sea un array
+  allTournaments = Array.isArray(data) ? data : [];
+  
+  console.log('Tournaments loaded:', allTournaments.length);
+  console.log('Sample tournament:', JSON.stringify(allTournaments[0], null, 2));
+} catch (error) {
+  console.error('Error loading tournament data:', error);
+  allTournaments = [];
+}
 
+// Agrupar torneos por año
 const torneosPorAnio = allTournaments.reduce((acc, torneo) => {
   const anio = torneo.anio;
   if (!acc[anio]) {
     acc[anio] = [];
   }
-  acc[anio].push(torneo);
+  acc[anio].push({
+    ...torneo,
+    // Asegurarse de que las fechas estén en el formato correcto
+    fechas: torneo.fechas || 'Fechas no especificadas',
+    // Asegurarse de que las categorías tengan la estructura esperada
+    categorias: torneo.categorias || []
+  });
   return acc;
 }, {});
 
 const years = Object.keys(torneosPorAnio).sort((a, b) => b - a);
-const latestYear = years[0];
 ---
 
 <PublicLayout title={title} description={description}>
@@ -50,37 +73,26 @@ const latestYear = years[0];
   </section>
 
   <!-- Tournaments Section -->
-  <section class="py-16">
+  <section class="py-12">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">Torneos Finalizados</h2>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-          Historial completo de todos los torneos finalizados con campeones, finalistas y estadísticas
-        </p>
-      </div>
-
       {years.map((year, index) => (
-        <div id={`tournaments-${year}`} class={`year-tournaments ${index > 0 ? 'hidden' : ''}`}>
-          {/* Global Stats - You might want to calculate these per year */}
-          <div class="space-y-6">
-            {torneosPorAnio[year].map(torneo => (
-              <details class="bg-white rounded-xl shadow-lg overflow-hidden group" open={index === 0}>
-                <summary class="bg-gradient-to-r from-green-600 to-blue-600 p-6 cursor-pointer hover:from-green-700 hover:to-blue-700 transition-colors">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <h3 class="text-2xl font-bold text-white">{torneo.titulo}</h3>
-                      <p class="text-white/90 text-sm mt-1">{torneo.lugar} • {torneo.fechas}</p>
-                      <div class="mt-2">
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                          Torneo Finalizado
-                        </span>
-                      </div>
-                    </div>
-                    <svg class="w-6 h-6 text-white transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+        <div id={`tournaments-${year}`} class={`year-tournaments space-y-6 ${index > 0 ? 'hidden' : ''}`}>
+          {torneosPorAnio[year].map(torneo => (
+            <details class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <summary class="bg-gradient-to-r from-blue-600 to-orange-600 p-6 cursor-pointer flex items-center justify-between">
+                <div>
+                  <h3 class="text-2xl font-bold text-white">{torneo.titulo}</h3>
+                  <p class="text-white/90 text-sm mt-1">{torneo.lugar} • {torneo.fechas}</p>
+                  <div class="mt-2">
+                    <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      Torneo Finalizado
+                    </span>
                   </div>
-                </summary>
+                </div>
+                <svg class="w-6 h-6 text-white transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
 
                 <div class="p-6 space-y-8">
                   {/* Champions by Category */}
