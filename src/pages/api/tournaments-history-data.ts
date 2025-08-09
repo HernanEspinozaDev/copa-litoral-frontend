@@ -3,6 +3,61 @@ import type { APIRoute } from 'astro';
 export const GET: APIRoute = async () => {
   const tournamentsHistory = [
     {
+      id: 'copa-litoral-2023',
+      titulo: 'Copa Litoral 2023',
+      anio: 2023,
+      lugar: 'Club de Tenis Montemar, San Antonio',
+      fechas: '15 mayo - 3 junio 2023',
+      estado: 'finalizado',
+      categorias: [
+        {
+          nombre: '1ª Categoría',
+          campeon: { nombre: 'Felipe Rojas' },
+          finalista: { nombre: 'Diego Soto' }
+        },
+        {
+          nombre: '2ª Categoría',
+          campeon: { nombre: 'Javier Morales' },
+          finalista: { nombre: 'Simón Navarro' }
+        },
+        {
+          nombre: '3ª Categoría',
+          campeon: { nombre: 'Benjamín Herrera' },
+          finalista: { nombre: 'Vicente Castillo' }
+        }
+      ]
+    },
+    {
+      id: 'copa-litoral-2024',
+      titulo: 'Copa Litoral 2024',
+      anio: 2024,
+      lugar: 'Club de Tenis Montemar, San Antonio',
+      fechas: '20 mayo - 8 junio 2024',
+      estado: 'finalizado',
+      categorias: [
+        {
+          nombre: '1ª Categoría',
+          campeon: { nombre: 'Martín Reyes' },
+          finalista: { nombre: 'Agustín Flores' }
+        },
+        {
+          nombre: '2ª Categoría',
+          campeon: { nombre: 'Sebastián Vega' },
+          finalista: { nombre: 'Matías Campos' }
+        },
+        {
+          nombre: '3ª Categoría',
+          campeon: { nombre: 'Nicolás Ríos' },
+          finalista: { nombre: 'Joaquín Méndez' }
+        },
+        {
+          nombre: '4ª Categoría',
+          campeon: { nombre: 'Tomás Valenzuela' },
+          finalista: { nombre: 'Lucas Moya' }
+        }
+      ]
+    },
+    {
       id: 'copa-litoral-2025',
       titulo: 'Copa Litoral 2025',
       anio: 2025,

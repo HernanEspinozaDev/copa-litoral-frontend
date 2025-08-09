@@ -1,36 +1,30 @@
-// src/pages/api/jugadores/update.ts
 import type { APIRoute } from 'astro';
-import { updateItem } from '@lib/database';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-export const PUT: APIRoute = async ({ request, params }) => {
+const dataFilePath = path.resolve(process.cwd(), 'src/data/players.json');
+
+export const POST: APIRoute = async ({ request }) => {
   try {
-    const { id } = params;
-    const { name, email, category } = await request.json();
+    const updatedPlayer = await request.json();
     
-    // Validate required fields
-    if (!id || !name || !email || !category) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
+    // Read existing data
+    const fileContent = await fs.readFile(dataFilePath, 'utf-8');
+    let players = JSON.parse(fileContent);
     
-    // Update player
-    const updatedPlayer = {
-      id,
-      name,
-      email,
-      category
-    };
-    
-    const result = updateItem('jugadores.json', id, updatedPlayer);
-    
-    if (!result) {
+    // Find and update player
+    const index = players.findIndex(p => p.id === updatedPlayer.id);
+    if (index === -1) {
       return new Response(JSON.stringify({ error: 'Player not found' }), {
         status: 404,
         headers: { 'Content-Type': 'application/json' }
       });
     }
+
+    players[index] = updatedPlayer;
+    
+    // Write updated data
+    await fs.writeFile(dataFilePath, JSON.stringify(players, null, 2));
     
     return new Response(JSON.stringify({ success: true, player: updatedPlayer }), {
       status: 200,

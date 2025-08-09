@@ -1,9 +1,10 @@
 ---
 // src/pages/admin/jugadores/index.astro
 import AdminLayout from '@layouts/AdminLayout.astro';
-import { getPlayers } from '@lib/database';
 
-const players = getPlayers();
+// Fetch data from the API endpoint
+const response = await fetch(`${Astro.url.origin}/api/players-data`);
+const { data: players } = await response.json();
 ---
 
 <AdminLayout>
@@ -23,6 +24,7 @@ const players = getPlayers();
         <tr>
           <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
           <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Club</th>
           <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
           <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
         </tr>
@@ -32,6 +34,7 @@ const players = getPlayers();
           <tr>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{player.name}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{player.email}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{player.club}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{player.category}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <a href={`/admin/jugadores/editar/${player.id}`} class="text-primary hover:text-orange-600 mr-4">Editar</a>

@@ -1,28 +1,22 @@
-// src/pages/api/jugadores/create.ts
 import type { APIRoute } from 'astro';
-import { createItem } from '@lib/database';
+import { promises as fs } from 'fs';
+import path from 'path';
+
+const dataFilePath = path.resolve(process.cwd(), 'src/data/players.json');
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { name, email, category } = await request.json();
+    const newPlayer = await request.json();
     
-    // Validate required fields
-    if (!name || !email || !category) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
+    // Read existing data
+    const fileContent = await fs.readFile(dataFilePath, 'utf-8');
+    const players = JSON.parse(fileContent);
     
-    // Create new player
-    const newPlayer = {
-      id: Date.now().toString(),
-      name,
-      email,
-      category
-    };
+    // Add new player
+    players.push(newPlayer);
     
-    createItem('jugadores.json', newPlayer);
+    // Write updated data
+    await fs.writeFile(dataFilePath, JSON.stringify(players, null, 2));
     
     return new Response(JSON.stringify({ success: true, player: newPlayer }), {
       status: 200,

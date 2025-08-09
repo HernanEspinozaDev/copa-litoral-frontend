@@ -19,3 +19,6 @@ src/lib/auth.ts
 .vscode/
 .DS_Store
 .idea/
+
+# Generated files
+GEMINI.md

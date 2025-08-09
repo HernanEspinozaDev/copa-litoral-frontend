@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
 interface Tournament {
@@ -20,6 +20,7 @@ interface Tournament {
   organizadores: Organizer[];
   fechasImportantes: ImportantDate[];
 }
+  createdAt?: string;
 
 interface Category {
   nombre: string;
@@ -256,23 +257,40 @@ Coordinadores por Categoría
   }
 ];
 
+// --- Helper functions for data access ---
+
+const DATA_PATH = path.join(process.cwd(), 'src', 'data', 'tournaments.json');
+
+/**
+ * NOTE: The initialTournaments constant is quite large.
+ * For better code organization, consider moving it to its own file,
+ * e.g., `src/data/initial-data.ts`, and importing it here.
+ */
+
+async function getTournaments(): Promise<Tournament[]> {
+  try {
+    const data = await fs.readFile(DATA_PATH, 'utf-8');
+    return JSON.parse(data);
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      // File doesn't exist, create it with initial data
+      const dataDir = path.dirname(DATA_PATH);
+      await fs.mkdir(dataDir, { recursive: true });
+      await fs.writeFile(DATA_PATH, JSON.stringify(initialTournaments, null, 2));
+      return initialTournaments;
+    }
+    // Re-throw other errors
+    throw error;
+  }
+}
+
+async function saveTournaments(tournaments: Tournament[]): Promise<void> {
+  await fs.writeFile(DATA_PATH, JSON.stringify(tournaments, null, 2));
+}
+
 export const GET: APIRoute = async ({ url }) => {
   try {
-    // Verificar si existe archivo de datos
-    const dataPath = path.join(process.cwd(), 'src', 'data', 'tournaments.json');
-    let tournaments = initialTournaments;
-
-    if (fs.existsSync(dataPath)) {
-      const data = fs.readFileSync(dataPath, 'utf-8');n      tournaments = JSON.parse(data);
-    } else {
-      // Crear archivo inicial si no existe
-      const dataDir = path.join(process.cwd(), 'src', 'data');
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
-      fs.writeFileSync(dataPath, JSON.stringify(initialTournaments, null, 2));
-    }
-
+    const tournaments = await getTournaments();
     const anio = url.searchParams.get('anio');
     const estado = url.searchParams.get('estado');
 
@@ -314,37 +332,46 @@ export const GET: APIRoute = async ({ url }) => {
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const newTournament = body;
 
     // Validar datos
-    if (!newTournament.titulo || !newTournament.anio || !newTournament.lugar) {
+    if (!body.titulo || !body.anio || !body.lugar) {
       return new Response(JSON.stringify({
         success: false,
-        error: 'Datos incompletos'
+        error: 'Datos incompletos. Se requiere titulo, anio y lugar.'
       }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    // Leer datos actuales
-    const dataPath = path.join(process.cwd(), 'src', 'data', 'tournaments.json');
-    let tournaments = initialTournaments;
+    const tournaments = await getTournaments();
 
-    if (fs.existsSync(dataPath)) {
-      const data = fs.readFileSync(dataPath, 'utf-8');
-      tournaments = JSON.parse(data);
-    }
+    // Create a new tournament object with defaults for optional/generated fields
+    const newTournament: Tournament = {
+      id: body.id || `tournament-${Date.now()}`,
+      titulo: body.titulo,
+      anio: body.anio,
+      estado: body.estado || 'proximamente',
+      lugar: body.lugar,
+      fechas: body.fechas || '',
+      categorias: body.categorias || [],
+      bases: body.bases || '',
+      formato: body.formato || '',
+      precio: body.precio || '',
+      precioSocios: body.precioSocios || '',
+      precioGeneral: body.precioGeneral || '',
+      recargoNocturno: body.recargoNocturno || '',
+      fechaLimiteInscripcion: body.fechaLimiteInscripcion || '',
+      organizadores: body.organizadores || [],
+      fechasImportantes: body.fechasImportantes || [],
+      createdAt: new Date().toISOString(),
+    };
 
     // Agregar nuevo torneo
-    tournaments.push({
-      ...newTournament,
-      id: newTournament.id || `tournament-${Date.now()}`,
-      createdAt: new Date().toISOString()
-    });
+    tournaments.push(newTournament);
 
     // Guardar datos actualizados
-    fs.writeFileSync(dataPath, JSON.stringify(tournaments, null, 2));
+    await saveTournaments(tournaments);
 
     return new Response(JSON.stringify({
       success: true,
