@@ -19,8 +19,8 @@ interface Tournament {
   fechaLimiteInscripcion: string;
   organizadores: Organizer[];
   fechasImportantes: ImportantDate[];
-}
   createdAt?: string;
+}
 
 interface Category {
   nombre: string;
