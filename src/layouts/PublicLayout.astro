@@ -70,6 +70,40 @@ const { title, description, hideFooter = false } = Astro.props as Props;
               </a>
             </div>
           </div>
+          <div class="-mr-2 flex md:hidden">
+            <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <!-- Icon when menu is closed. -->
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <!-- Icon when menu is open. -->
+              <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="/" class="text-slate-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+            Inicio
+          </a>
+          <a href="/torneos" class="text-slate-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+            Torneos
+          </a>
+          <a href="/historial" class="text-slate-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+            Historial
+          </a>
+          <a href="/nosotros" class="text-slate-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+            Nosotros
+          </a>
+          <a href="/contacto" class="text-slate-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+            Contacto
+          </a>
         </div>
       </div>
     </nav>
@@ -78,6 +112,22 @@ const { title, description, hideFooter = false } = Astro.props as Props;
     <main>
       <slot />
     </main>
+
+    <script>
+      const button = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+
+      if (button && menu) {
+        button.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+          button.setAttribute('aria-expanded', !expanded);
+          // Toggle icon
+          button.querySelector('svg:nth-child(2)').classList.toggle('hidden'); // Hamburger icon
+          button.querySelector('svg:nth-child(3)').classList.toggle('hidden'); // Close icon
+        });
+      }
+    </script>
 
     <!-- Footer -->
     {!hideFooter && <footer class="bg-slate-900 text-white">
