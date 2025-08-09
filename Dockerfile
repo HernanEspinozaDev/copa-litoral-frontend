@@ -21,6 +21,7 @@ WORKDIR /app
 # Copiamos solo los archivos necesarios de la etapa de construcción
 COPY --from=build-stage /app/dist ./dist
 COPY --from=build-stage /app/package.json ./package.json
+RUN npm ci --omit=dev --production
 
 
 # Astro SSR por defecto escucha en el puerto 4321
