@@ -22,3 +22,7 @@ src/lib/auth.ts
 
 # Generated files
 GEMINI.md
+
+# Docker files
+Dockerfile
+docker-compose.yml

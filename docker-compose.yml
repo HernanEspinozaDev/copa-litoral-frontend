@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  copa-litoral-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: copa-litoral-frontend
+    networks:
+      - mi-red-proxy
+    restart: unless-stopped
+    ports:
+      - "4321:4321" # Mapea el puerto del contenedor al host
+
+networks:
+  mi-red-proxy:
+    external: true
