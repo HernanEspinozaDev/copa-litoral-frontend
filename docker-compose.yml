@@ -10,7 +10,7 @@ services:
       - mi-red-proxy
     restart: unless-stopped
     ports:
-      - "4321:4321" # Mapea el puerto del contenedor al host
+      - "8080:8080" # Mapea el puerto del contenedor al host
 
 networks:
   mi-red-proxy:

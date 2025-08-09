@@ -24,7 +24,7 @@ COPY --from=build-stage /app/package.json ./package.json
 COPY --from=build-stage /app/node_modules ./node_modules
 
 # Astro SSR por defecto escucha en el puerto 4321
-EXPOSE 4321
+EXPOSE 8080
 
-# Comando para iniciar el servidor de Astro
-CMD ["node", "dist/server/entry.mjs"]
+# Comando para iniciar el servidor de Astro en el puerto 8080
+CMD ["sh", "-c", "PORT=8080 node dist/server/entry.mjs"]
