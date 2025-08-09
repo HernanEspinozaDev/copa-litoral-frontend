@@ -21,10 +21,10 @@ WORKDIR /app
 # Copiamos solo los archivos necesarios de la etapa de construcción
 COPY --from=build-stage /app/dist ./dist
 COPY --from=build-stage /app/package.json ./package.json
-COPY --from=build-stage /app/node_modules ./node_modules
+
 
 # Astro SSR por defecto escucha en el puerto 4321
 EXPOSE 8080
 
 # Comando para iniciar el servidor de Astro en el puerto 8080
-CMD ["sh", "-c", "PORT=8080 node dist/server/entry.mjs"]
+CMD ["sh", "-c", "HOST=0.0.0.0 PORT=8080 node dist/server/entry.mjs"]
