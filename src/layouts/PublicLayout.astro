@@ -1,0 +1,130 @@
+---
+// src/layouts/PublicLayout.astro
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="tenis, torneo, valparaíso, chile, copa litoral" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://copalitoral.cl" />
+    <meta property="og:image" content="/og-image.jpg" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent">
+                Copa Litoral
+              </h1>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a href="/" class="text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Inicio
+              </a>
+              <a href="/torneos" class="text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Torneos
+              </a>
+              <a href="/historial" class="text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Historial
+              </a>
+              <a href="/nosotros" class="text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Nosotros
+              </a>
+              <a href="/contacto" class="text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Contacto
+              </a>
+              <a href="/admin/login" class="bg-gradient-to-r from-blue-600 to-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-blue-700 hover:to-orange-700 transition-colors">
+                Panel Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Copa Litoral</h3>
+            <p class="text-slate-300 text-sm">
+              El torneo de tenis más importante de la Quinta Región de Valparaíso, Chile.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/torneos" class="text-slate-300 hover:text-white transition-colors">Torneos</a></li>
+              <li><a href="/nosotros" class="text-slate-300 hover:text-white transition-colors">Nosotros</a></li>
+              <li><a href="/contacto" class="text-slate-300 hover:text-white transition-colors">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <nav class="flex items-center space-x-8">
+              <a href="/" class="text-white hover:text-orange-300 transition-colors">Inicio</a>
+              <a href="/nosotros" class="text-white hover:text-orange-300 transition-colors">Nosotros</a>
+              <a href="/torneos" class="text-white hover:text-orange-300 transition-colors">Torneos</a>
+              <a href="/historial" class="text-white hover:text-orange-300 transition-colors">Historial</a>
+              <a href="/contacto" class="text-white hover:text-orange-300 transition-colors">Contacto</a>
+              <a href="/admin/login" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                Panel Admin
+              </a>
+            </nav>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>Valparaíso, Chile</li>
+              <li>info@copalitoral.cl</li>
+              <li>+56 9 1234 5678</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                <span class="sr-only">Instagram</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-.881 0-1.601-.72-1.601-1.601s.72-1.601 1.601-1.601 1.601.72 1.601 1.601-.72 1.601-1.601 1.601z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-slate-700 text-center">
+          <p class="text-slate-400 text-sm">
+            &copy; 2025 Copa Litoral. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

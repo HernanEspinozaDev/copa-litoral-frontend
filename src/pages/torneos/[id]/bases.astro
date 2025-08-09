@@ -1,0 +1,161 @@
+---
+// src/pages/torneos/[id]/bases.astro
+import PublicLayout from '../../../layouts/PublicLayout.astro';
+
+const { id } = Astro.params;
+
+// Datos del torneo según ID
+const tournamentData = {
+  'copa-litoral-2025': {
+    title: 'Copa Litoral 2025',
+    subtitle: 'Torneo Principal',
+    location: 'Club de Tenis Montemar, San Antonio',
+    dates: '15-30 de noviembre 2025',
+    categories: [
+      { name: '1ª Categoría', players: 12 },
+      { name: '2ª Categoría', players: 12 },
+      { name: '3ª Categoría', players: 12 },
+      { name: '4ª Categoría', players: 12 }
+    ],
+    bases: {
+      title: 'BASES TORNEO COPA LITORAL 2025',
+      content: `
+1. FECHA Y LUGAR
+El torneo se realizará del 15 al 30 de noviembre de 2025 en las canchas del Club de Tenis Montemar, 
+ubicado en Rapa Nui 1030, Villa Italia, San Antonio.
+
+2. CATEGORÍAS
+Se disputarán 4 categorías:
+• 1ª Categoría: 12 jugadores
+• 2ª Categoría: 12 jugadores  
+• 3ª Categoría: 12 jugadores
+• 4ª Categoría: 12 jugadores
+
+3. SISTEMA DE COMPETENCIA
+Fase de grupos + semifinales:
+- Fase de grupos: 2 grupos de 6 jugadores cada uno
+- Semifinales: 1er vs 2do de cada grupo
+- Final: Ganadores de semifinales
+
+4. FORMATO DE PARTIDOS
+- Fase de grupos: 2 sets convencionales + super tie-break a 10 puntos en caso de empate
+- Semifinales: 2 sets convencionales + super tie-break a 10 puntos
+- Final: Al mejor de 3 sets convencionales
+
+5. INSCRIPCIONES
+- Socios Club Montemar: $25.000
+- Público general: $30.000
+- Cierre de inscripciones: 10 de noviembre 2025
+- Límite de jugadores: 12 por categoría
+
+6. PREMIOS
+- Trofeos para campeones y finalistas
+- Medallas para semifinalistas
+- Premios cortesía de auspiciadores
+
+7. PELLOTAS
+- Cada jugador debe traer sus propias pelotas
+- Pelotas nuevas para las finales
+
+8. INDUMENTARIA Y CONDUCTA
+- Obligatorio uso de zapatillas de tenis y ropa deportiva adecuada
+- Conducta deportiva y respetuosa
+- Sanciones en caso de faltas graves
+
+9. HORARIOS
+- Partidos comenzarán a las 10:00 AM
+- Programación sujeta a cambios por condiciones climáticas
+
+10. DISPOSICIONES GENERALES
+- La organización se reserva el derecho de resolver situaciones no contempladas
+- Los campeones deben participar en la siguiente edición en categoría superior
+- Decisión de la organización es definitiva
+
+11. CONTACTO
+Cristian Ramírez: +56 9 3203 3223
+Elías Muñoz: +56 9 9002 4571
+Email: info@copalitoral.cl
+      `
+    }
+  }
+};
+
+const tournament = tournamentData[id] || tournamentData['copa-litoral-2025'];
+const title = `Bases - ${tournament.title}`;
+const description = `Bases completas del ${tournament.title} ${tournament.subtitle}`;
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{tournament.title}</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Bases completas del torneo
+      </p>
+    </div>
+  </section>
+
+  <!-- Tournament Info -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Información del Torneo</h2>
+            <div class="space-y-3">
+              <p><strong>Ubicación:</strong> {tournament.location}</p>
+              <p><strong>Fechas:</strong> {tournament.dates}</p>
+              <p><strong>Categorías:</strong></p>
+              <ul class="ml-4 space-y-1">
+                {tournament.categories.map(category => (
+                  <li>• {category.name}: {category.players} jugadores</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Descarga</h3>
+            <div class="space-y-4">
+              <a 
+                href="/assets/documents/bases-copa-litoral-2025.pdf" 
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Descargar Bases PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bases Content -->
+      <div class="bg-white rounded-xl shadow-lg">
+        <div class="p-8">
+          <h2 class="text-2xl font-bold text-slate-900 mb-6">{tournament.bases.title}</h2>
+          <div class="prose prose-slate max-w-none">
+            <pre class="whitespace-pre-wrap font-sans text-slate-700 leading-relaxed">
+{tournament.bases.content}
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-8">
+        <a 
+          href="/torneos" 
+          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver a Torneos
+        </a>
+      </div>
+    </div>
+  </section>
+</PublicLayout>

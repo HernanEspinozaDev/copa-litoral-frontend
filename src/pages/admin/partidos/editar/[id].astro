@@ -1,0 +1,100 @@
+---
+// src/pages/admin/partidos/editar/[id].astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { getMatches, getTournaments } from '@lib/database';
+
+const { id } = Astro.params;
+const matches = getMatches();
+const match = matches.find(m => m.id === id);
+const tournaments = getTournaments();
+
+if (!match) {
+  throw new Error('Partido no encontrado');
+}
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Editar Partido - Copa Litoral</slot>
+  <slot name="description" slot="description">Editar información de partido</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Editar Partido</h1>
+  
+  <form id="matchForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <input type="hidden" id="id" name="id" value={id} />
+    
+    <div class="mb-4">
+      <label for="tournamentId" class="block text-gray-700 font-bold mb-2">Torneo</label>
+      <select id="tournamentId" name="tournamentId" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+        <option value="">Selecciona un torneo</option>
+        {tournaments.map(tournament => (
+          <option value={tournament.id} selected:tournament.id === match.tournamentId>{tournament.name}</option>
+        ))}
+      </select>
+    </div>
+    
+    <div class="mb-4">
+      <label for="player1" class="block text-gray-700 font-bold mb-2">Jugador 1</label>
+      <input type="text" id="player1" name="player1" value={match.player1} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="player2" class="block text-gray-700 font-bold mb-2">Jugador 2</label>
+      <input type="text" id="player2" name="player2" value={match.player2} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="date" class="block text-gray-700 font-bold mb-2">Fecha</label>
+      <input type="date" id="date" name="date" value={match.date} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="result" class="block text-gray-700 font-bold mb-2">Resultado</label>
+      <input type="text" id="result" name="result" value={match.result} placeholder="Ej: 6-4, 6-3" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Guardar Cambios
+      </button>
+      <a href="/admin/partidos" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('matchForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const id = formData.get('id');
+      const data = {
+        id: id,
+        tournamentId: formData.get('tournamentId'),
+        player1: formData.get('player1'),
+        player2: formData.get('player2'),
+        date: formData.get('date'),
+        result: formData.get('result') || 'Pendiente'
+      };
+      
+      try {
+        const response = await fetch(`/api/partidos/update/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Partido actualizado correctamente');
+          window.location.href = '/admin/partidos';
+        } else {
+          alert('Error al actualizar el partido');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>

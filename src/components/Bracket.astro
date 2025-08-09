@@ -1,0 +1,88 @@
+---
+// src/components/Bracket.astro
+const { tournamentId } = Astro.props;
+// In a real implementation, this would fetch matches for the specific tournament
+// For now, we'll just display a static bracket structure
+---
+
+<div class="bracket-container">
+  <h3 class="text-xl font-bold mb-4">Cuadro del Torneo</h3>
+  
+  <div class="bracket">
+    <!-- Round 1 -->
+    <div class="round round-1">
+      <h4 class="text-lg font-semibold mb-2">Primera Ronda</h4>
+      <div class="match">
+        <div class="player player-1">Jugador 1</div>
+        <div class="player player-2">Jugador 2</div>
+      </div>
+      <div class="match">
+        <div class="player player-1">Jugador 3</div>
+        <div class="player player-2">Jugador 4</div>
+      </div>
+    </div>
+    
+    <!-- Round 2 -->
+    <div class="round round-2">
+      <h4 class="text-lg font-semibold mb-2">Semifinales</h4>
+      <div class="match">
+        <div class="player player-1">Ganador Match 1</div>
+        <div class="player player-2">Ganador Match 2</div>
+      </div>
+    </div>
+    
+    <!-- Final -->
+    <div class="round round-final">
+      <h4 class="text-lg font-semibold mb-2">Final</h4>
+      <div class="match final-match">
+        <div class="player player-1">Finalista 1</div>
+        <div class="player player-2">Finalista 2</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bracket {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .round {
+    text-align: center;
+  }
+  
+  .match {
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 15px 0;
+    min-width: 200px;
+  }
+  
+  .player {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+  
+  .player-1 {
+    border-bottom: 1px solid var(--primary);
+  }
+  
+  .final-match {
+    background-color: #fff8e6;
+    border: 2px solid var(--primary);
+  }
+</style>
+
+<script>
+  // Add interactivity to bracket
+  document.querySelectorAll('.player').forEach(player => {
+    player.addEventListener('click', () => {
+      player.classList.toggle('winner');
+    });
+  });
+</script>

@@ -1,0 +1,44 @@
+---
+// src/pages/torneos/[id].astro
+import PublicLayout from '@layouts/PublicLayout.astro';
+import Bracket from '@components/Bracket.astro';
+import { getTournaments } from '@lib/database';
+
+const { id } = Astro.params;
+const tournaments = getTournaments();
+const tournament = tournaments.find(t => t.id === id);
+
+if (!tournament) {
+  throw new Error('Torneo no encontrado');
+}
+---
+
+<PublicLayout>
+  <slot name="title" slot="title">{tournament.name} - Copa Litoral</slot>
+  <slot name="description" slot="description">{tournament.description}</slot>
+  
+  <article class="max-w-4xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl font-bold mb-4 text-primary">{tournament.name}</h1>
+      <p class="text-lg mb-2">{tournament.date}</p>
+      <p class="text-lg mb-4">{tournament.location}</p>
+      <p class="text-xl">{tournament.description}</p>
+    </header>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Categorías</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          {tournament.categories.map(category => (
+            <li class="text-lg">{category}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Bracket del Torneo</h2>
+        <Bracket tournamentId={id} />
+      </div>
+    </div>
+  </article>
+</PublicLayout>

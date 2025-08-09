@@ -1,0 +1,63 @@
+---
+// src/pages/login.astro
+import PublicLayout from '@layouts/PublicLayout.astro';
+---
+
+<PublicLayout>
+  <slot name="title" slot="title">Iniciar Sesión - Copa Litoral</slot>
+  <slot name="description" slot="description">Panel de administración de torneos Copa Litoral</slot>
+  
+  <div class="max-w-md mx-auto mt-12">
+    <h1 class="text-3xl font-bold mb-6 text-center text-primary">Iniciar Sesión</h1>
+    
+    <form id="loginForm" class="bg-white p-6 rounded-lg shadow-md">
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-bold mb-2">Usuario</label>
+        <input type="text" id="username" name="username" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      
+      <div class="mb-6">
+        <label for="password" class="block text-gray-700 font-bold mb-2">Contraseña</label>
+        <input type="password" id="password" name="password" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      
+      <button type="submit" class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Iniciar Sesión
+      </button>
+    </form>
+  </div>
+  
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const data = {
+        username: formData.get('username'),
+        password: formData.get('password')
+      };
+      
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+          credentials: 'same-origin'
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          window.location.href = result.redirectTo || '/admin/dashboard';
+        } else {
+          alert(result.error || 'Credenciales inválidas');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</PublicLayout>

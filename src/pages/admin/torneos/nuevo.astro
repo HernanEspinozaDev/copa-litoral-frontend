@@ -1,0 +1,91 @@
+---
+// src/pages/admin/torneos/nuevo.astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Nuevo Torneo - Copa Litoral</slot>
+  <slot name="description" slot="description">Crear un nuevo torneo</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Nuevo Torneo</h1>
+  
+  <form id="tournamentForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 font-bold mb-2">Nombre del Torneo</label>
+      <input type="text" id="name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="date" class="block text-gray-700 font-bold mb-2">Fecha</label>
+      <input type="date" id="date" name="date" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="location" class="block text-gray-700 font-bold mb-2">Ubicación</label>
+      <input type="text" id="location" name="location" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="description" class="block text-gray-700 font-bold mb-2">Descripción</label>
+      <textarea id="description" name="description" rows="4" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+    </div>
+    
+    <div class="mb-4">
+      <label for="categories" class="block text-gray-700 font-bold mb-2">Categorías (separadas por coma)</label>
+      <input type="text" id="categories" name="categories" placeholder="1ª categoría, 2ª categoría, Sub-16" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="image" class="block text-gray-700 font-bold mb-2">Imagen</label>
+      <input type="file" id="image" name="image" accept="image/*" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Crear Torneo
+      </button>
+      <a href="/admin/torneos" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('tournamentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const categories = formData.get('categories').split(',').map(cat => cat.trim());
+      
+      // For image upload, we would need to handle this separately
+      // For now, we'll just use a placeholder
+      const data = {
+        name: formData.get('name'),
+        date: formData.get('date'),
+        location: formData.get('location'),
+        description: formData.get('description'),
+        categories: categories,
+        imageUrl: '/default-tournament.jpg'
+      };
+      
+      try {
+        const response = await fetch('/api/torneos/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Torneo creado correctamente');
+          window.location.href = '/admin/torneos';
+        } else {
+          alert('Error al crear el torneo');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>

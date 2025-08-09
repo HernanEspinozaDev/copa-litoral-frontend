@@ -1,0 +1,89 @@
+---
+// src/pages/admin/partidos/nuevo.astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { getTournaments } from '@lib/database';
+
+const tournaments = getTournaments();
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Nuevo Partido - Copa Litoral</slot>
+  <slot name="description" slot="description">Registrar un nuevo partido</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Nuevo Partido</h1>
+  
+  <form id="matchForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <div class="mb-4">
+      <label for="tournamentId" class="block text-gray-700 font-bold mb-2">Torneo</label>
+      <select id="tournamentId" name="tournamentId" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+        <option value="">Selecciona un torneo</option>
+        {tournaments.map(tournament => (
+          <option value={tournament.id}>{tournament.name}</option>
+        ))}
+      </select>
+    </div>
+    
+    <div class="mb-4">
+      <label for="player1" class="block text-gray-700 font-bold mb-2">Jugador 1</label>
+      <input type="text" id="player1" name="player1" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="player2" class="block text-gray-700 font-bold mb-2">Jugador 2</label>
+      <input type="text" id="player2" name="player2" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="date" class="block text-gray-700 font-bold mb-2">Fecha</label>
+      <input type="date" id="date" name="date" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="result" class="block text-gray-700 font-bold mb-2">Resultado</label>
+      <input type="text" id="result" name="result" placeholder="Ej: 6-4, 6-3" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Crear Partido
+      </button>
+      <a href="/admin/partidos" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('matchForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const data = {
+        tournamentId: formData.get('tournamentId'),
+        player1: formData.get('player1'),
+        player2: formData.get('player2'),
+        date: formData.get('date'),
+        result: formData.get('result') || 'Pendiente'
+      };
+      
+      try {
+        const response = await fetch('/api/partidos/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Partido creado correctamente');
+          window.location.href = '/admin/partidos';
+        } else {
+          alert('Error al crear el partido');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>

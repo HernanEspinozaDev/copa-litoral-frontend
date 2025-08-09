@@ -1,0 +1,82 @@
+---
+// src/pages/admin/sponsors/editar/[id].astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { getSponsors } from '@lib/database';
+
+const { id } = Astro.params;
+const sponsors = getSponsors();
+const sponsor = sponsors.find(s => s.id === id);
+
+if (!sponsor) {
+  throw new Error('Sponsor no encontrado');
+}
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Editar Sponsor - Copa Litoral</slot>
+  <slot name="description" slot="description">Editar información de sponsor</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Editar Sponsor</h1>
+  
+  <form id="sponsorForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <input type="hidden" id="id" name="id" value={id} />
+    
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
+      <input type="text" id="name" name="name" value={sponsor.name} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="logoUrl" class="block text-gray-700 font-bold mb-2">URL del Logo</label>
+      <input type="url" id="logoUrl" name="logoUrl" value={sponsor.logoUrl} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="website" class="block text-gray-700 font-bold mb-2">Website</label>
+      <input type="url" id="website" name="website" value={sponsor.website} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Guardar Cambios
+      </button>
+      <a href="/admin/sponsors" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('sponsorForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const id = formData.get('id');
+      const data = {
+        id: id,
+        name: formData.get('name'),
+        logoUrl: formData.get('logoUrl'),
+        website: formData.get('website')
+      };
+      
+      try {
+        const response = await fetch(`/api/sponsors/update/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Sponsor actualizado correctamente');
+          window.location.href = '/admin/sponsors';
+        } else {
+          alert('Error al actualizar el sponsor');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>

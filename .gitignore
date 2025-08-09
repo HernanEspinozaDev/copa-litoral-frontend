@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.output/
+.astro/
+
+# Environment variables
+.env
+.env.*
+
+# Client sensitive data
+src/data/*.json
+src/lib/database.ts
+src/lib/auth.ts
+
+# Editor and OS files
+.vscode/
+.DS_Store
+.idea/

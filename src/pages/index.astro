@@ -1,0 +1,234 @@
+---
+// src/pages/index.astro
+import PublicLayout from '../layouts/PublicLayout.astro';
+
+const title = 'Copa Litoral 2025 - Torneo de Tenis en Valparaíso';
+const description = 'El torneo de tenis más importante de la Quinta Región de Valparaíso, Chile. Participa en nuestras competencias de alto nivel.';
+
+const features = [
+  {
+    title: "Torneos Profesionales",
+    description: "Competencias organizadas por categorías con sistema de cuadros profesional",
+    icon: "🏆"
+  },
+  {
+    title: "Clubes de Alto Nivel",
+    description: "Participación de los mejores clubes de tenis de la región",
+    icon: "🎾"
+  },
+  {
+    title: "Premios y Reconocimiento",
+    description: "Trofeos, premios en efectivo y reconocimiento deportivo",
+    icon: "💰"
+  }
+];
+
+const tournaments = [
+  {
+    title: "Copa Litoral 2025",
+    description: "Torneo principal con 1ª a 4ª categoría",
+    date: "Marzo 2025",
+    image: "/images/torneo-principal.jpg",
+    status: "Inscripciones Abiertas",
+    icon: "🏆"
+  },
+  {
+    title: "Copa Litoral Verano",
+    description: "Edición especial de verano",
+    date: "Enero 2025",
+    image: "/images/torneo-verano.jpg",
+    status: "Próximamente",
+    icon: "☀️"
+  },
+  {
+    title: "Copa Litoral Juvenil",
+    description: "Competencia para jóvenes talentos",
+    date: "Febrero 2025",
+    image: "/images/torneo-juvenil.jpg",
+    status: "Próximamente",
+    icon: "🎾"
+  }
+];
+
+const stats = [
+  { number: "4+", label: "Ediciones" },
+  { number: "200+", label: "Jugadores" },
+  { number: "15+", label: "Clubes" },
+  { number: "8+", label: "Categorías" }
+];
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600 overflow-hidden">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 text-center text-white px-4">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        Copa Litoral
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+        El torneo de tenis más importante de la Quinta Región de Valparaíso, Chile
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#torneos" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          Ver Torneos
+        </a>
+        <a href="/admin/login" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-semibold transition-colors">
+          Panel Admin
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-4">Por qué elegir Copa Litoral</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Competencias de alto nivel en la hermosa región de Valparaíso
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {features.map(feature => (
+          <div class="text-center p-8 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-orange-600">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center text-white">
+        <h2 class="text-4xl font-bold mb-12">Nuestros Números</h2>
+        <div class="grid md:grid-cols-4 gap-8">
+          {stats.map(stat => (
+            <div class="text-center">
+              <div class="text-5xl font-bold mb-2">{stat.number}</div>
+              <div class="text-lg">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments Section -->
+  <section id="torneos" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-4">Torneos Destacados</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Participa en nuestros torneos de alto nivel
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {tournaments.map(tournament => (
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="bg-gradient-to-r from-blue-600 to-orange-600 h-48 flex items-center justify-center">
+              <span class="text-6xl">{tournament.icon}</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">{tournament.title}</h3>
+              <p class="text-slate-600 mb-2">{tournament.description}</p>
+              <p class="text-sm text-slate-500 mb-4">{tournament.date}</p>
+              <div class="flex items-center justify-between">
+                <span class={`px-3 py-1 rounded-full text-xs font-medium ${
+                  tournament.status === "Inscripciones Abiertas" 
+                    ? "bg-green-100 text-green-800" 
+                    : "bg-yellow-100 text-yellow-800"
+                }`}>
+                  {tournament.status}
+                </span>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
+                  Ver detalles
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">¿Listo para competir?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Únete a la comunidad de tenistas más grande de la región
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/admin/login" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          Iniciar Sesión
+        </a>
+        <a href="/contacto" class="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-3 rounded-lg font-semibold transition-colors">
+          Contactar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-8">
+    <h2 class="text-2xl font-bold mb-6 text-center">Contacto</h2>
+    <form id="contactForm" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
+        <input type="text" id="name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div class="mb-4">
+        <label for="message" class="block text-gray-700 font-bold mb-2">Mensaje</label>
+        <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      </div>
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Enviar
+      </button>
+    </form>
+  </section>
+  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+      
+      try {
+        const response = await fetch('/api/registros/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Mensaje enviado correctamente');
+          e.target.reset();
+        } else {
+          alert('Error al enviar el mensaje');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</PublicLayout>

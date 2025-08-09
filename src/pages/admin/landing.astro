@@ -1,0 +1,85 @@
+---
+// src/pages/admin/landing.astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { getLandingData } from '@lib/database';
+
+const landingData = getLandingData();
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Editar Landing Page - Copa Litoral</slot>
+  <slot name="description" slot="description">Editar contenido de la página principal</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Editar Landing Page</h1>
+  
+  <form id="landingForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <div class="mb-4">
+      <label for="title" class="block text-gray-700 font-bold mb-2">Título</label>
+      <input type="text" id="title" name="title" value={landingData.title} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="subtitle" class="block text-gray-700 font-bold mb-2">Subtítulo</label>
+      <textarea id="subtitle" name="subtitle" rows="3" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">{landingData.subtitle}</textarea>
+    </div>
+    
+    <div class="mb-4">
+      <label for="heroImage" class="block text-gray-700 font-bold mb-2">Imagen Hero</label>
+      <input type="text" id="heroImage" name="heroImage" value={landingData.heroImage} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <p class="text-sm text-gray-500 mt-1">Ruta relativa a la imagen (ej: /hero.jpg)</p>
+    </div>
+    
+    <div class="mb-4">
+      <label for="ctaText" class="block text-gray-700 font-bold mb-2">Texto del CTA</label>
+      <input type="text" id="ctaText" name="ctaText" value={landingData.ctaText} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="ctaLink" class="block text-gray-700 font-bold mb-2">Enlace del CTA</label>
+      <input type="text" id="ctaLink" name="ctaLink" value={landingData.ctaLink} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <p class="text-sm text-gray-500 mt-1">Ruta relativa (ej: /torneos)</p>
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Guardar Cambios
+      </button>
+      <a href="/admin/dashboard" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('landingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const data = {
+        title: formData.get('title'),
+        subtitle: formData.get('subtitle'),
+        heroImage: formData.get('heroImage'),
+        ctaText: formData.get('ctaText'),
+        ctaLink: formData.get('ctaLink')
+      };
+      
+      try {
+        const response = await fetch('/api/landing/update', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Landing page actualizada correctamente');
+        } else {
+          alert('Error al actualizar la landing page');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>

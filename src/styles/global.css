@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #E67E22;
+  --surface: #001F54;
+  --on-surface: #FFFFFF;
+}

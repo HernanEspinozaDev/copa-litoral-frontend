@@ -1,0 +1,247 @@
+---
+// src/pages/contacto.astro
+import PublicLayout from '../layouts/PublicLayout.astro';
+
+const title = 'Contacto - Copa Litoral';
+const description = 'Información de contacto y organización de Copa Litoral. Cristian Ramírez y Elías Muñoz, directores del torneo.';
+
+const contactInfo = {
+  directors: [
+    {
+      name: 'Cristian Ramírez Meneses',
+      title: 'Director del Torneo',
+      role: 'Profesor de Educación Física y Salud',
+      phone: '+56 9 3203 3223',
+      email: 'cristian@copa-litoral.cl',
+      categories: ['1ª y 2ª Categoría']
+    },
+    {
+      name: 'Elías Muñoz Ríos',
+      title: 'Director del Torneo',
+      role: 'Instructor de Tenis',
+      phone: '+56 9 9002 4571',
+      email: 'elias@copa-litoral.cl',
+      categories: ['3ª y 4ª Categoría']
+    }
+  ],
+  socialMedia: {
+    instagram: '@LaCopaLitoral',
+    whatsappGroup: 'Grupo Copa Litoral',
+    facebook: 'Copa Litoral Oficial'
+  },
+  location: {
+    name: 'Club de Tenis Montemar',
+    address: 'Rapa Nui 1030, Villa Italia',
+    city: 'San Antonio, Chile',
+    coordinates: '-33.5948, -71.6074'
+  }
+};
+
+const faqs = [
+  {
+    question: '¿Cómo me inscribo en un torneo?',
+    answer: 'Las inscripciones se realizan directamente con los directores del torneo. Los jugadores son registrados por los administradores, no es necesario crear una cuenta.'
+  },
+  {
+    question: '¿Cuál es el formato de los partidos?',
+    answer: 'Fase de grupos y semifinales: 2 sets convencionales, en caso de empate se juega un super tie-break a 10 puntos. Final: al mejor de 3 sets convencionales.'
+  },
+  {
+    question: '¿Qué incluye la inscripción?',
+    answer: 'La inscripción incluye participación en el torneo, pelotas para las finales, hidratación durante los partidos y acceso al stand de hidratación.'
+  },
+  {
+    question: '¿Puedo participar si no soy socio del club?',
+    answer: 'Sí, el torneo está abierto al público general. Los socios del Club Montemar tienen un descuento en la inscripción.'
+  }
+];
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Contacto Copa Litoral</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Información de contacto y organización del torneo más importante de la región
+      </p>
+    </div>
+  </section>
+
+  <!-- Directors Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Directores del Torneo</h2>
+        <p class="text-lg text-slate-600">Contacta directamente con los organizadores</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {contactInfo.directors.map(director => (
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-2xl text-white">👤</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">{director.name}</h3>
+              <p class="text-slate-600">{director.title}</p>
+              <p class="text-sm text-slate-500">{director.role}</p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <span class="text-blue-600 mr-3">📱</span>
+                <a href={`tel:${director.phone.replace(/\s/g, '')}`} class="text-slate-700 hover:text-blue-600">
+                  {director.phone}
+                </a>
+              </div>
+              <div class="flex items-center">
+                <span class="text-blue-600 mr-3">📧</span>
+                <a href={`mailto:${director.email}`} class="text-slate-700 hover:text-blue-600">
+                  {director.email}
+                </a>
+              </div>
+              <div class="flex items-center">
+                <span class="text-blue-600 mr-3">🏆</span>
+                <span class="text-slate-700">{director.categories.join(', ')}</span>
+              </div>
+            </div>
+
+            <div class="mt-6 text-center">
+              <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                Contactar por WhatsApp
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Sede del Torneo</h2>
+        <p class="text-lg text-slate-600">Club de Tenis Montemar, San Antonio</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h3 class="text-xl font-bold mb-4 text-slate-900">Ubicación</h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-semibold text-slate-900">{contactInfo.location.name}</h4>
+              <p class="text-slate-600">{contactInfo.location.address}</p>
+              <p class="text-slate-600">{contactInfo.location.city}</p>
+            </div>
+            
+            <div class="mt-6">
+              <h4 class="font-semibold text-slate-900 mb-2">Redes Sociales</h4>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <span class="text-blue-600 mr-2">📸</span>
+                  <span class="text-slate-700">{contactInfo.socialMedia.instagram}</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-green-600 mr-2">💬</span>
+                  <span class="text-slate-700">{contactInfo.socialMedia.whatsappGroup}</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-600 mr-2">📘</span>
+                  <span class="text-slate-700">{contactInfo.socialMedia.facebook}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h3 class="text-xl font-bold mb-4 text-slate-900">Mapa del Lugar</h3>
+          <div class="bg-slate-200 h-64 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <span class="text-4xl mb-2">📍</span>
+              <p class="text-slate-600">Mapa del Club de Tenis Montemar</p>
+              <p class="text-sm text-slate-500 mt-2">
+                Rapa Nui 1030, Villa Italia<br/>
+                San Antonio, Chile
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Preguntas Frecuentes</h2>
+        <p class="text-lg text-slate-600">Respuestas a las dudas más comunes</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{faq.question}</h3>
+              <p class="text-slate-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Formulario de Contacto</h2>
+        <p class="text-lg text-slate-600">¿Tienes alguna pregunta específica? Escríbenos</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <form class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Nombre</label>
+              <input type="text" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tu nombre completo" />
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+              <input type="email" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="tu@email.com" />
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Asunto</label>
+              <select class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option>Consulta sobre inscripciones</option>
+                <option>Pregunta sobre bases</option>
+                <option>Información sobre categorías</option>
+                <option>Otra consulta</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Mensaje</label>
+              <textarea rows="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Escribe tu mensaje aquí..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+              Enviar Mensaje
+            </button>
+          </form>
+
+          <div class="mt-6 text-center">
+            <p class="text-sm text-slate-600">
+              También puedes contactarnos directamente por WhatsApp o llamada
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PublicLayout>

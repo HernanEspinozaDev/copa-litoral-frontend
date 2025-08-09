@@ -1,0 +1,232 @@
+---
+// src/pages/torneos/[id]/cuadros.astro
+import PublicLayout from '../../../layouts/PublicLayout.astro';
+
+const { id } = Astro.params;
+
+// Datos de cuadros según torneo
+const bracketsData = {
+  'copa-litoral-2025': {
+    title: 'Copa Litoral 2025',
+    subtitle: 'Cuadros y Resultados',
+    categories: [
+      {
+        name: '1ª Categoría',
+        winner: 'Cristian Ramírez',
+        finalist: 'Elías Muñoz',
+        semifinalists: ['Juan Pérez', 'María González'],
+        quarterfinalists: ['Carlos López', 'Ana Martínez', 'Pedro Sánchez', 'Laura Rodríguez'],
+        bracket: [
+          {
+            round: 'Fase de Grupos - Grupo A',
+            matches: [
+              { player1: 'Cristian Ramírez', player2: 'Juan Pérez', score: '6-3, 6-4', winner: 'Cristian Ramírez' },
+              { player1: 'Cristian Ramírez', player2: 'María González', score: '6-2, 6-3', winner: 'Cristian Ramírez' },
+              { player1: 'Cristian Ramírez', player2: 'Carlos López', score: '6-4, 6-2', winner: 'Cristian Ramírez' },
+              { player1: 'Cristian Ramírez', player2: 'Ana Martínez', score: '6-1, 6-2', winner: 'Cristian Ramírez' },
+              { player1: 'Cristian Ramírez', player2: 'Pedro Sánchez', score: '6-3, 6-4', winner: 'Cristian Ramírez' },
+              { player1: 'Cristian Ramírez', player2: 'Laura Rodríguez', score: '6-2, 6-1', winner: 'Cristian Ramírez' }
+            ]
+          },
+          {
+            round: 'Fase de Grupos - Grupo B',
+            matches: [
+              { player1: 'Elías Muñoz', player2: 'José García', score: '6-3, 6-4', winner: 'Elías Muñoz' },
+              { player1: 'Elías Muñoz', player2: 'Sofía Fernández', score: '6-2, 6-3', winner: 'Elías Muñoz' },
+              { player1: 'Elías Muñoz', player2: 'Miguel Torres', score: '6-4, 6-2', winner: 'Elías Muñoz' },
+              { player1: 'Elías Muñoz', player2: 'Elena Castro', score: '6-1, 6-2', winner: 'Elías Muñoz' },
+              { player1: 'Elías Muñoz', player2: 'Roberto Silva', score: '6-3, 6-4', winner: 'Elías Muñoz' },
+              { player1: 'Elías Muñoz', player2: 'Patricia Morales', score: '6-2, 6-1', winner: 'Elías Muñoz' }
+            ]
+          },
+          {
+            round: 'Semifinales',
+            matches: [
+              { player1: 'Cristian Ramírez', player2: 'Juan Pérez', score: '6-4, 6-3', winner: 'Cristian Ramírez' },
+              { player1: 'Elías Muñoz', player2: 'María González', score: '6-2, 6-4', winner: 'Elías Muñoz' }
+            ]
+          },
+          {
+            round: 'Final',
+            matches: [
+              { player1: 'Cristian Ramírez', player2: 'Elías Muñoz', score: '6-3, 6-4, 6-2', winner: 'Cristian Ramírez' }
+            ]
+          }
+        ]
+      },
+      {
+        name: '2ª Categoría',
+        winner: 'Juan Pérez',
+        finalist: 'María González',
+        bracket: [
+          {
+            round: 'Fase de Grupos',
+            matches: [
+              { player1: 'Juan Pérez', player2: 'Carlos López', score: '6-4, 6-3', winner: 'Juan Pérez' },
+              { player1: 'Juan Pérez', player2: 'Ana Martínez', score: '6-2, 6-1', winner: 'Juan Pérez' },
+              { player1: 'Juan Pérez', player2: 'Pedro Sánchez', score: '6-3, 6-4', winner: 'Juan Pérez' }
+            ]
+          },
+          {
+            round: 'Final',
+            matches: [
+              { player1: 'Juan Pérez', player2: 'María González', score: '7-5, 6-4', winner: 'Juan Pérez' }
+            ]
+          }
+        ]
+      },
+      {
+        name: '3ª Categoría',
+        winner: 'Carlos López',
+        finalist: 'Ana Martínez',
+        bracket: [
+          {
+            round: 'Fase de Grupos',
+            matches: [
+              { player1: 'Carlos López', player2: 'Pedro Sánchez', score: '6-4, 6-3', winner: 'Carlos López' },
+              { player1: 'Carlos López', player2: 'Laura Rodríguez', score: '6-2, 6-1', winner: 'Carlos López' }
+            ]
+          },
+          {
+            round: 'Final',
+            matches: [
+              { player1: 'Carlos López', player2: 'Ana Martínez', score: '6-4, 6-3', winner: 'Carlos López' }
+            ]
+          }
+        ]
+      },
+      {
+        name: '4ª Categoría',
+        winner: 'Pedro Sánchez',
+        finalist: 'Laura Rodríguez',
+        bracket: [
+          {
+            round: 'Fase de Grupos',
+            matches: [
+              { player1: 'Pedro Sánchez', player2: 'Laura Rodríguez', score: '6-3, 6-4', winner: 'Pedro Sánchez' },
+              { player1: 'Pedro Sánchez', player2: 'Elena Castro', score: '6-2, 6-1', winner: 'Pedro Sánchez' }
+            ]
+          },
+          {
+            round: 'Final',
+            matches: [
+              { player1: 'Pedro Sánchez', player2: 'Laura Rodríguez', score: '6-4, 6-3', winner: 'Pedro Sánchez' }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+
+const tournament = bracketsData[id] || bracketsData['copa-litoral-2025'];
+const title = `Cuadros - ${tournament.title}`;
+const description = `Cuadros y resultados completos del ${tournament.title}`;
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-green-900 via-green-800 to-blue-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{tournament.title}</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Cuadros y resultados completos
+      </p>
+    </div>
+  </section>
+
+  <!-- Brackets Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      {tournament.categories.map(category => (
+        <div class="mb-12">
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">{category.name}</h2>
+            
+            <div class="mb-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-green-50 rounded-lg p-4">
+                  <h3 class="font-semibold text-green-900 mb-2">🏆 Campeón</h3>
+                  <p class="text-lg font-medium text-green-700">{category.winner}</p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <h3 class="font-semibold text-slate-900 mb-2">🥈 Finalista</h3>
+                  <p class="text-lg font-medium text-slate-700">{category.finalist}</p>
+                </div>
+              </div>
+            </div>
+
+            {category.bracket.map(round => (
+              <div class="mb-8">
+                <h3 class="text-xl font-semibold text-slate-900 mb-4">{round.round}</h3>
+                <div class="space-y-3">
+                  {round.matches.map(match => (
+                    <div class="bg-slate-50 rounded-lg p-4 flex items-center justify-between">
+                      <div class="flex items-center space-x-4">
+                        <div class="flex-1">
+                          <div class={`font-medium ${match.winner === match.player1 ? 'text-green-700' : 'text-slate-700'}`}>
+                            {match.player1}
+                          </div>
+                          <div class="text-slate-400">vs</div>
+                          <div class={`font-medium ${match.winner === match.player2 ? 'text-green-700' : 'text-slate-700'}`}>
+                            {match.player2}
+                          </div>
+                        </div>
+                        <div class="text-sm font-medium text-slate-600 bg-white px-3 py-1 rounded">
+                          {match.score}
+                        </div>
+                      </div>
+                      <div class="text-sm text-slate-500">
+                        Ganador: <span class="font-medium text-green-600">{match.winner}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Statistics -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">Estadísticas del Torneo</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">{tournament.categories.length}</div>
+            <div class="text-slate-600">Categorías</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">
+              {tournament.categories.reduce((total, cat) => total + cat.bracket[0].matches.length, 0)}
+            </div>
+            <div class="text-slate-600">Partidos Jugados</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">
+              {tournament.categories.reduce((total, cat) => total + (cat.bracket[0].matches[0]?.player1 ? 1 : 0), 0)}
+            </div>
+            <div class="text-slate-600">Jugadores Participantes</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">100%</div>
+            <div class="text-slate-600">Torneo Completado</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-8">
+        <a 
+          href="/torneos" 
+          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver a Torneos
+        </a>
+      </div>
+    </div>
+  </section>
+</PublicLayout>

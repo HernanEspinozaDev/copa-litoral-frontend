@@ -1,0 +1,168 @@
+---
+// src/pages/torneos.astro
+import PublicLayout from '../layouts/PublicLayout.astro';
+
+const title = 'Torneos Copa Litoral - Año 2025';
+const description = 'Todos los torneos de Copa Litoral 2025 con inscripciones, bases, resultados y brackets de tenis';
+
+// Obtener datos desde la API durante el build (SSR)
+const response = await fetch(`${Astro.url.origin}/api/tournaments-data`);
+const result = await response.json();
+const torneosPorAnio = { 2025: result.data || [] };
+
+// Agrupar torneos por año
+// const torneosPorAnio = {
+//   2025: [torneoPrincipal2025, ...torneosFuturos]
+// };
+
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Torneos Copa Litoral</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Todos los torneos organizados por Copa Litoral con inscripciones, bases, resultados y brackets
+      </p>
+    </div>
+  </section>
+
+  <!-- Year Navigation -->
+  <section class="py-8 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium">2025</button>
+        <button class="bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-medium cursor-not-allowed" disabled>2026</button>
+        <button class="bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-medium cursor-not-allowed" disabled>2027</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments List -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="space-y-6">
+        {torneosPorAnio[2025].map(torneo => (
+          <details class="bg-white rounded-xl shadow-lg overflow-hidden group">
+            <summary class="bg-gradient-to-r from-blue-600 to-orange-600 p-6 cursor-pointer list-none flex items-center justify-between">
+              <div>
+                <h2 class="text-2xl font-bold text-white">{torneo.titulo}</h2>
+                <p class="text-white/80">{torneo.lugar} • {torneo.fechas}</p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class={`px-4 py-2 rounded-full text-sm font-medium ${
+                  torneo.estado === 'inscripciones_abiertas' ? 'bg-green-100 text-green-800' :
+                  torneo.estado === 'proximamente' ? 'bg-yellow-100 text-yellow-800' :
+                  'bg-slate-100 text-slate-800'
+                }`}>
+                  {torneo.estado === 'inscripciones_abiertas' ? 'Inscripciones Abiertas' :
+                   torneo.estado === 'proximamente' ? 'Próximamente' :
+                   'Finalizado'}
+                </span>
+                <svg class="w-5 h-5 text-white transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+
+            <div class="p-6">
+              <!-- Bases Summary -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-4 text-slate-900">Resumen de Bases</h3>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-medium text-slate-900 mb-2 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                      </svg>
+                      Categorías
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                      {torneo.categorias.map(categoria => (
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                          {categoria}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 class="font-medium text-slate-900 mb-2 flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Participantes
+                      </h4>
+                      <p class="text-slate-600">{torneo.totalJugadores} jugadores por categoría</p>
+                    </div>
+                    
+                    <div>
+                      <h4 class="font-medium text-slate-900 mb-2 flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h3m-6 4h3" />
+                        </svg>
+                        Formato
+                      </h4>
+                      <p class="text-slate-600">{torneo.formato}</p>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 class="font-medium text-slate-900 mb-2 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                      </svg>
+                      Inscripción
+                    </h4>
+                    <p class="text-slate-600 font-medium">{torneo.precio}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bases del torneo -->
+              <div class="mt-6 pt-4 border-t border-slate-200">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                  <h4 class="font-bold text-lg text-slate-900 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Bases del Torneo
+                  </h4>
+                  <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-4 shadow-sm">
+                      <div class="text-slate-700 leading-relaxed whitespace-pre-wrap font-medium">{torneo.bases}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex flex-wrap gap-4">
+                <a 
+                  href={`/torneos/${torneo.id}/bases`} 
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Ver Bases
+                </a>
+                <a 
+                  href={`/torneos/${torneo.id}/cuadros`} 
+                  class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  Ver Resultados
+                </a>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</PublicLayout>

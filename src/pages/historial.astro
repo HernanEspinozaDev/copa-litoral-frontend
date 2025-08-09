@@ -1,0 +1,228 @@
+---
+// src/pages/historial.astro
+import PublicLayout from '../layouts/PublicLayout.astro';
+
+const title = 'Historial Copa Litoral - Torneos Finalizados';
+const description = 'Historial completo de torneos finalizados Copa Litoral con campeones, finalistas y estadísticas de tenis';
+
+// Obtener datos desde la API durante el build (SSR)
+const response = await fetch(`${Astro.url.origin}/api/tournaments-history-data`);
+const result = await response.json();
+const torneosPorAnio = { 2025: result.data || [] };
+---
+
+<PublicLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-orange-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Historial Copa Litoral</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Palmares completos de todos los torneos finalizados con campeones y finalistas
+      </p>
+    </div>
+  </section>
+
+  <!-- Year Navigation -->
+  <section class="py-8 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium">2025</button>
+        <button class="bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-medium cursor-not-allowed" disabled>2024</button>
+        <button class="bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-medium cursor-not-allowed" disabled>2023</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Torneos Finalizados</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+          Historial completo de todos los torneos finalizados con campeones, finalistas y estadísticas
+        </p>
+      </div>
+
+      {/* Global Stats */}
+      <div class="grid md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-xl shadow-lg border">
+          <div class="text-3xl font-bold text-blue-600">48</div>
+          <div class="text-slate-600">Partidos Jugados</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border">
+          <div class="text-3xl font-bold text-green-600">48</div>
+          <div class="text-slate-600">Jugadores</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border">
+          <div class="text-3xl font-bold text-orange-600">4</div>
+          <div class="text-slate-600">Clubes</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border">
+          <div class="text-3xl font-bold text-purple-600">18</div>
+          <div class="text-slate-600">Días de Torneo</div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        {torneosPorAnio[2025].map(torneo => (
+          <details class="bg-white rounded-xl shadow-lg overflow-hidden group">
+            <summary class="bg-gradient-to-r from-green-600 to-blue-600 p-6 cursor-pointer hover:from-green-700 hover:to-blue-700 transition-colors">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-2xl font-bold text-white">{torneo.titulo}</h3>
+                  <p class="text-white/90 text-sm mt-1">{torneo.lugar} • {torneo.fechas}</p>
+                  <div class="mt-2">
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                      Torneo Finalizado
+                    </span>
+                  </div>
+                </div>
+                <svg class="w-6 h-6 text-white transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+
+            <div class="p-6 space-y-8">
+              {/* Champions by Category */}
+              <div>
+                <h4 class="text-xl font-semibold mb-6 text-slate-900 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                  Campeones por Categoría
+                </h4>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {torneo.categorias.map(categoria => (
+                    <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg p-4 border border-yellow-200">
+                      <h5 class="font-bold text-center mb-4 text-slate-900">{categoria.nombre}</h5>
+                      
+                      {/* Champion */}
+                      <div class="mb-4 text-center">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                          <span class="text-2xl">👑</span>
+                        </div>
+                        <div class="font-semibold text-slate-900">{categoria.campeon.nombre}</div>
+                        <div class="text-sm text-slate-600">{categoria.campeon.club}</div>
+                        <div class="text-xs text-green-600 font-medium">Campeón</div>
+                      </div>
+
+                      {/* Finalist */}
+                      <div class="mb-4 text-center">
+                        <div class="w-10 h-10 bg-slate-300 rounded-full mx-auto mb-1 flex items-center justify-center">
+                          <span class="text-lg">🥈</span>
+                        </div>
+                        <div class="font-medium text-slate-900">{categoria.finalista.nombre}</div>
+                        <div class="text-sm text-slate-600">{categoria.finalista.club}</div>
+                        <div class="text-xs text-slate-500">Finalista</div>
+                      </div>
+
+                      {/* Stats */}
+                      <div class="text-xs space-y-1 text-center">
+                        <div class="flex justify-between">
+                          <span class="text-slate-600">Partidos:</span>
+                          <span class="font-medium">{categoria.campeon.partidosGanados}</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-slate-600">Sets:</span>
+                          <span class="font-medium">{categoria.campeon.setsGanados}</span>
+                        </div>
+                        <div class="flex justify-between">
+                          <span class="text-slate-600">Juegos:</span>
+                          <span class="font-medium">{categoria.campeon.juegosGanados}</span>
+                        </div>
+                      </div>
+
+                      {/* Semifinalists */}
+                      <div class="mt-4 pt-2 border-t border-yellow-200">
+                        <div class="text-xs font-medium text-center text-slate-600 mb-2">Semifinalistas:</div>
+                        <div class="space-y-1">
+                          {categoria.semifinalistas.map(semifinalista => (
+                            <div class="text-xs text-center text-slate-500">
+                              {semifinalista.nombre} ({semifinalista.club})
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tournament Statistics */}
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold mb-4 text-slate-900 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  Estadísticas del Torneo
+                </h4>
+                
+                <div class="grid md:grid-cols-4 gap-4">
+                  <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-2xl font-bold text-blue-600">{torneo.estadisticas.totalPartidos}</div>
+                    <div class="text-sm text-slate-600">Partidos Totales</div>
+                  </div>
+                  <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-2xl font-bold text-green-600">{torneo.estadisticas.totalJugadores}</div>
+                    <div class="text-sm text-slate-600">Jugadores</div>
+                  </div>
+                  <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-2xl font-bold text-orange-600">{torneo.estadisticas.totalClubes}</div>
+                    <div class="text-sm text-slate-600">Clubes</div>
+                  </div>
+                  <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-2xl font-bold text-purple-600">{torneo.estadisticas.duracion}</div>
+                    <div class="text-sm text-slate-600">Duración</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Gallery */}
+              <div class="bg-slate-50 rounded-lg p-6">
+                <h4 class="text-lg font-semibold mb-4 text-slate-900 flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Galería del Torneo
+                </h4>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div class="bg-slate-200 h-32 rounded-lg flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">
+                    <span class="text-slate-500 text-sm">Ceremonia Apertura</span>
+                  </div>
+                  <div class="bg-slate-200 h-32 rounded-lg flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">
+                    <span class="text-slate-500 text-sm">Final 1ª Categoría</span>
+                  </div>
+                  <div class="bg-slate-200 h-32 rounded-lg flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">
+                    <span class="text-slate-500 text-sm">Premiación</span>
+                  </div>
+                  <div class="bg-slate-200 h-32 rounded-lg flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">
+                    <span class="text-slate-500 text-sm">Fotos Grupales</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      {/* No tournaments message for other years */}
+      <div class="text-center mt-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 max-w-md mx-auto">
+          <svg class="w-16 h-16 text-slate-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Sin Torneos Anteriores</h3>
+          <p class="text-slate-600 mb-4">
+            No hay torneos finalizados para años anteriores a 2025.
+          </p>
+          <p class="text-slate-500 text-sm">
+            Copa Litoral inició en 2025 con su primera edición.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PublicLayout>

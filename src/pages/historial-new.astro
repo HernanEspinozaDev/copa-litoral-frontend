@@ -1,0 +1,273 @@
+---
+// src/pages/historial.astro
+import PublicLayout from '../layouts/PublicLayout.astro';
+
+// Datos de torneos finalizados con palmares
+const torneosFinalizados = [
+  {
+    id: 'copalitoral2025',
+    titulo: 'Copa Litoral 2025',
+    lugar: 'Club de Tenis Montemar, San Antonio',
+    fechas: '28 mayo - 15 junio 2025',
+    estado: 'finalizado',
+    categorias: [
+      {
+        nombre: '1ª Categoría',
+        totalJugadores: 12,
+        campeon: {
+          nombre: 'Cristian Ramírez',
+          club: 'Club Montemar',
+          partidosGanados: 4,
+          setsGanados: 8,
+          juegosGanados: 48
+        },
+        finalista: {
+          nombre: 'Elías Muñoz',
+          club: 'Club Montemar',
+          partidosGanados: 3,
+          setsGanados: 6,
+          juegosGanados: 42
+        },
+        semifinalistas: [
+          { nombre: 'Carlos González', club: 'Club Valparaíso' },
+          { nombre: 'Andrés Silva', club: 'Club Viña del Mar' }
+        ]
+      },
+      {
+        nombre: '2ª Categoría',
+        totalJugadores: 12,
+        campeon: {
+          nombre: 'Roberto Castro',
+          club: 'Club Valparaíso',
+          partidosGanados: 4,
+          setsGanados: 8,
+          juegosGanados: 45
+        },
+        finalista: {
+          nombre: 'María Rodríguez',
+          club: 'Club Viña del Mar',
+          partidosGanados: 3,
+          setsGanados: 6,
+          juegosGanados: 40
+        },
+        semifinalistas: [
+          { nombre: 'Ana López', club: 'Club Quilpué' },
+          { nombre: 'Jorge Mendoza', club: 'Club Montemar' }
+        ]
+      },
+      {
+        nombre: '3ª Categoría',
+        totalJugadores: 12,
+        campeon: {
+          nombre: 'Alexandra Flores',
+          club: 'Club Quilpué',
+          partidosGanados: 4,
+          setsGanados: 8,
+          juegosGanados: 44
+        },
+        finalista: {
+          nombre: 'Carlos Mendoza',
+          club: 'Club Montemar',
+          partidosGanados: 3,
+          setsGanados: 6,
+          juegosGanados: 38
+        },
+        semifinalistas: [
+          { nombre: 'Elena Torres', club: 'Club Valparaíso' },
+          { nombre: 'Felipe Ríos', club: 'Club Viña del Mar' }
+        ]
+      },
+      {
+        nombre: '4ª Categoría',
+        totalJugadores: 12,
+        campeon: {
+          nombre: 'Daniela Pérez',
+          club: 'Club Valparaíso',
+          partidosGanados: 4,
+          setsGanados: 8,
+          juegosGanados: 42
+        },
+        finalista: {
+          nombre: 'Eduardo Rojas',
+          club: 'Club Montemar',
+          partidosGanados: 3,
+          setsGanados: 6,
+          juegosGanados: 36
+        },
+        semifinalistas: [
+          { nombre: 'Francisca Morales', club: 'Club Quilpué' },
+          { nombre: 'Gustavo Herrera', club: 'Club Viña del Mar' }
+        ]
+      }
+    ],
+    estadisticas: {
+      totalPartidos: 48,
+      totalJugadores: 48,
+      totalClubes: 4,
+      duracion: '18 días',
+      asistencia: 'Más de 200 personas'
+    }
+  }
+];
+
+const estadisticasGenerales = {
+  totalTorneos: 1,
+  totalParticipantes: 48,
+  totalPartidos: 92,
+  categorias: 4
+};
+---
+
+<PublicLayout title="Historial Copa Litoral - Palmares de Campeones" description="Historial completo de todos los torneos Copa Litoral finalizados con campeones y finalistas">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-blue-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Historial Copa Litoral</h1>
+      <p class="text-xl text-white/90">Revive los momentos más memorables de nuestros torneos finalizados</p>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg p-6 text-center shadow-sm">
+          <div class="text-3xl font-bold text-green-600 mb-2">{estadisticasGenerales.totalTorneos}</div>
+          <div class="text-slate-600">Torneos Finalizados</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-sm">
+          <div class="text-3xl font-bold text-blue-600 mb-2">{estadisticasGenerales.totalParticipantes}</div>
+          <div class="text-slate-600">Participantes Totales</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-sm">
+          <div class="text-3xl font-bold text-orange-600 mb-2">{estadisticasGenerales.totalPartidos}</div>
+          <div class="text-slate-600">Partidos Jugados</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-sm">
+          <div class="text-3xl font-bold text-purple-600 mb-2">{estadisticasGenerales.categorias}</div>
+          <div class="text-slate-600">Categorías</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historical Tournaments -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Torneos Finalizados</h2>
+      
+      <div class="space-y-8">
+        {torneosFinalizados.map(torneo => (
+          <details class="bg-white rounded-xl shadow-lg overflow-hidden group">
+            <summary class="bg-gradient-to-r from-green-600 to-blue-600 p-6 cursor-pointer list-none flex items-center justify-between">
+              <div>
+                <h2 class="text-2xl font-bold text-white">{torneo.titulo}</h2>
+                <p class="text-white/80">{torneo.lugar} • {torneo.fechas}</p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  Finalizado
+                </span>
+                <svg class="w-5 h-5 text-white transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+
+            <div class="p-6">
+              <!-- Tournament Statistics -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-4 text-slate-900">Estadísticas del Torneo</h3>
+                <div class="grid md:grid-cols-4 gap-4">
+                  <div class="bg-slate-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-600">{torneo.estadisticas.totalJugadores}</div>
+                    <div class="text-sm text-slate-600">Participantes</div>
+                  </div>
+                  <div class="bg-slate-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-green-600">{torneo.estadisticas.totalPartidos}</div>
+                    <div class="text-sm text-slate-600">Partidos</div>
+                  </div>
+                  <div class="bg-slate-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-orange-600">{torneo.estadisticas.totalClubes}</div>
+                    <div class="text-sm text-slate-600">Clubes</div>
+                  </div>
+                  <div class="bg-slate-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-purple-600">{torneo.estadisticas.duracion}</div>
+                    <div class="text-sm text-slate-600">Duración</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Champions by Category -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-4 text-slate-900">Campeones por Categoría</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {torneo.categorias.map(categoria => (
+                    <div class="border rounded-lg p-4">
+                      <h4 class="font-semibold text-lg text-center mb-4 text-slate-900">{categoria.nombre}</h4>
+                      
+                      <div class="space-y-3">
+                        <div class="text-center">
+                          <div class="w-16 h-16 bg-yellow-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <span class="text-2xl">🏆</span>
+                          </div>
+                          <h5 class="font-semibold text-slate-900">{categoria.campeon.nombre}</h5>
+                          <p class="text-sm text-slate-600">{categoria.campeon.club}</p>
+                          <p class="text-xs text-slate-500">Campeón</p>
+                        </div>
+                        
+                        <div class="text-center">
+                          <div class="w-16 h-16 bg-slate-300 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <span class="text-2xl">🥈</span>
+                          </div>
+                          <h5 class="font-semibold text-slate-900">{categoria.finalista.nombre}</h5>
+                          <p class="text-sm text-slate-600">{categoria.finalista.club}</p>
+                          <p class="text-xs text-slate-500">Finalista</p>
+                        </div>
+                        
+                        <div>
+                          <p class="text-sm text-slate-600 mb-2">🏅 <span class="font-medium">Semifinalistas:</span></p>
+                          <div class="space-y-1">
+                            {categoria.semifinalistas.map(semifinalista => (
+                              <div class="text-xs text-slate-600 text-center">
+                                <span class="font-medium">{semifinalista.nombre}</span>
+                                <br/>
+                                <span class="text-slate-500">{semifinalista.club}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-wrap gap-4">
+                <a 
+                  href={`/torneos/${torneo.id}/cuadros`} 
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  Ver Cuadros Completos
+                </a>
+                <a 
+                  href={`/torneos`} 
+                  class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                  Ver Próximos Torneos
+                </a>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</PublicLayout>

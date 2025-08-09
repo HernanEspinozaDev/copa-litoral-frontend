@@ -1,0 +1,93 @@
+---
+// src/pages/admin/jugadores/editar/[id].astro
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { getPlayers } from '@lib/database';
+
+const { id } = Astro.params;
+const players = getPlayers();
+const player = players.find(p => p.id === id);
+
+if (!player) {
+  throw new Error('Jugador no encontrado');
+}
+---
+
+<AdminLayout>
+  <slot name="title" slot="title">Editar Jugador - Copa Litoral</slot>
+  <slot name="description" slot="description">Editar información de jugador</slot>
+  
+  <h1 class="text-3xl font-bold mb-6 text-primary">Editar Jugador</h1>
+  
+  <form id="playerForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <input type="hidden" id="id" name="id" value={id} />
+    
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
+      <input type="text" id="name" name="name" value={player.name} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+      <input type="email" id="email" name="email" value={player.email} required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    
+    <div class="mb-4">
+      <label for="category" class="block text-gray-700 font-bold mb-2">Categoría</label>
+      <select id="category" name="category" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+        <option value="1ª categoría" selected:player.category === "1ª categoría">1ª categoría</option>
+        <option value="2ª categoría" selected:player.category === "2ª categoría">2ª categoría</option>
+        <option value="3ª categoría" selected:player.category === "3ª categoría">3ª categoría</option>
+        <option value="4ª categoría" selected:player.category === "4ª categoría">4ª categoría</option>
+        <option value="Sub-14" selected:player.category === "Sub-14">Sub-14</option>
+        <option value="Sub-16" selected:player.category === "Sub-16">Sub-16</option>
+        <option value="Sub-18" selected:player.category === "Sub-18">Sub-18</option>
+        <option value="+35 años" selected:player.category === "+35 años">+35 años</option>
+        <option value="+45 años" selected:player.category === "+45 años">+45 años</option>
+        <option value="+55 años" selected:player.category === "+55 años">+55 años</option>
+      </select>
+    </div>
+    
+    <div class="flex space-x-4">
+      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Guardar Cambios
+      </button>
+      <a href="/admin/jugadores" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+        Cancelar
+      </a>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('playerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const id = formData.get('id');
+      const data = {
+        id: id,
+        name: formData.get('name'),
+        email: formData.get('email'),
+        category: formData.get('category')
+      };
+      
+      try {
+        const response = await fetch(`/api/jugadores/update/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alert('Jugador actualizado correctamente');
+          window.location.href = '/admin/jugadores';
+        } else {
+          alert('Error al actualizar el jugador');
+        }
+      } catch (error) {
+        alert('Error de conexión: ' + error.message);
+      }
+    });
+  </script>
+</AdminLayout>
