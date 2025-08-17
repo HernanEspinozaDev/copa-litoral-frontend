@@ -1,0 +1,126 @@
+[
+  {
+    "id": "part-001",
+    "torneo": "Copa Litoral 2025",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": "jug-001",
+      "nombre": "Cristian González",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": "jug-003",
+      "nombre": "María José Fernández",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2025-02-01",
+    "hora": "10:00",
+    "cancha": 1,
+    "resultado": {
+      "setsJ1": 2,
+      "setsJ2": 1,
+      "juegosSet1J1": 6,
+      "juegosSet1J2": 4,
+      "juegosSet2J1": 3,
+      "juegosSet2J2": 6,
+      "juegosSet3J1": 6,
+      "juegosSet3J2": 2
+    },
+    "estado": "finalizado",
+    "ganador": "jug-001"
+  },
+  {
+    "id": "part-002",
+    "torneo": "Copa Litoral 2025",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "B",
+    "jugador1": {
+      "id": "jug-002",
+      "nombre": "Elias Rodríguez",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": "jug-004",
+      "nombre": "Carlos Alberto López",
+      "club": "Club de Tenis Limache"
+    },
+    "fecha": "2025-02-01",
+    "hora": "12:00",
+    "cancha": 2,
+    "resultado": {
+      "setsJ1": 2,
+      "setsJ2": 0,
+      "juegosSet1J1": 6,
+      "juegosSet1J2": 2,
+      "juegosSet2J1": 6,
+      "juegosSet2J2": 3
+    },
+    "estado": "finalizado",
+    "ganador": "jug-002"
+  },
+  {
+    "id": "part-003",
+    "torneo": "Copa Litoral 2025",
+    "año": 2025,
+    "fase": "semifinal",
+    "grupo": null,
+    "jugador1": {
+      "id": "jug-001",
+      "nombre": "Cristian González",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": "jug-002",
+      "nombre": "Elias Rodríguez",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2025-02-08",
+    "hora": "15:00",
+    "cancha": 1,
+    "resultado": {
+      "setsJ1": 2,
+      "setsJ2": 1,
+      "juegosSet1J1": 7,
+      "juegosSet1J2": 5,
+      "juegosSet2J1": 4,
+      "juegosSet2J2": 6,
+      "juegosSet3J1": 6,
+      "juegosSet3J2": 3
+    },
+    "estado": "finalizado",
+    "ganador": "jug-001"
+  },
+  {
+    "id": "part-004",
+    "torneo": "Copa Litoral 2025",
+    "año": 2025,
+    "fase": "final",
+    "grupo": null,
+    "jugador1": {
+      "id": "jug-001",
+      "nombre": "Cristian González",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": "jug-003",
+      "nombre": "María José Fernández",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2025-02-15",
+    "hora": "16:00",
+    "cancha": 1,
+    "resultado": {
+      "setsJ1": 2,
+      "setsJ2": 0,
+      "juegosSet1J1": 6,
+      "juegosSet1J2": 4,
+      "juegosSet2J1": 6,
+      "juegosSet2J2": 2
+    },
+    "estado": "finalizado",
+    "ganador": "jug-001"
+  }
+]

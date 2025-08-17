@@ -1,87 +1,264 @@
 ---
-// src/pages/admin/jugadores/nuevo.astro
 import AdminLayout from '@layouts/AdminLayout.astro';
+import Toast from '@components/Toast.astro';
+
+// Obtener parámetros de URL para pre-llenar el formulario
+const urlParams = Astro.url.searchParams;
+const prefilledTorneo = urlParams.get('torneo') || '';
+const prefilledCategoria = urlParams.get('categoria') || '';
+const prefilledAño = urlParams.get('año') || '';
+
+// Handle form submission
+if (Astro.request.method === 'POST') {
+  try {
+    const formData = await Astro.request.formData();
+    const data = {
+      id: Date.now().toString(),
+      nombre: formData.get('nombre'),
+      apellido: formData.get('apellido'),
+      dni: null,
+      fechaNacimiento: null,
+      email: formData.get('email'),
+      telefono: formData.get('telefono'),
+      club: formData.get('club'),
+      año: parseInt(formData.get('año')),
+      torneo: formData.get('torneo'),
+      categoria: formData.get('categoria'),
+      estado: formData.get('estado')
+    };
+    
+    const response = await fetch(`${Astro.url.origin}/api/jugadores/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    
+    if (response.ok) {
+      return Astro.redirect('/admin/jugadores');
+    } else {
+      console.error('Error creating player');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 ---
 
-<AdminLayout>
-  <slot name="title" slot="title">Nuevo Jugador - Copa Litoral</slot>
-  <slot name="description" slot="description">Registrar un nuevo jugador</slot>
+<AdminLayout title="Nuevo Jugador" description="Registrar un nuevo jugador en el sistema">
   
-  <h1 class="text-3xl font-bold mb-6 text-primary">Nuevo Jugador</h1>
-  
-  <form id="playerForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
-    <div class="mb-4">
-      <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
-      <input type="text" id="name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
-    </div>
-    
-    <div class="mb-4">
-      <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-      <input type="email" id="email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+  <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-6 mb-8 text-white">
+    <h1 class="text-3xl font-bold mb-2">Nuevo Jugador</h1>
+    <p class="text-blue-100">Registra un nuevo jugador en el sistema</p>
+    {prefilledTorneo && (
+      <div class="mt-4 bg-blue-700 bg-opacity-50 rounded-lg p-3">
+        <p class="text-sm">
+          <strong>Pre-seleccionado:</strong> {prefilledTorneo} - {prefilledCategoria} ({prefilledAño})
+        </p>
+      </div>
+    )}
+  </div>
+
+  <form method="POST" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 max-w-4xl" id="playerForm" novalidate>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label for="nombre" class="block text-gray-700 font-semibold mb-2">Nombre *</label>
+        <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s]+" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+        <div class="error-message hidden text-red-500 text-sm mt-1" id="nombre-error">El nombre debe tener entre 2 y 50 caracteres y solo contener letras</div>
+      </div>
+      
+      <div>
+        <label for="apellido" class="block text-gray-700 font-semibold mb-2">Apellido *</label>
+        <input type="text" id="apellido" name="apellido" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s]+" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+        <div class="error-message hidden text-red-500 text-sm mt-1" id="apellido-error">El apellido debe tener entre 2 y 50 caracteres y solo contener letras</div>
+      </div>
     </div>
 
-    <div class="mb-4">
-      <label for="club" class="block text-gray-700 font-bold mb-2">Club</label>
-      <input type="text" id="club" name="club" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label for="email" class="block text-gray-700 font-semibold mb-2">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+        <div class="error-message hidden text-red-500 text-sm mt-1" id="email-error">Ingresa un email válido</div>
+      </div>
+      
+      <div>
+        <label for="telefono" class="block text-gray-700 font-semibold mb-2">Teléfono *</label>
+        <input type="tel" id="telefono" name="telefono" required pattern="^(\+?56)?[0-9]{8,9}$" minlength="8" maxlength="12" placeholder="Ej: +56912345678 o 912345678" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+        <div class="error-message hidden text-red-500 text-sm mt-1" id="telefono-error">Ingresa un teléfono válido (8-9 dígitos, opcionalmente con +56)</div>
+      </div>
     </div>
-    
-    <div class="mb-4">
-      <label for="category" class="block text-gray-700 font-bold mb-2">Categoría</label>
-      <select id="category" name="category" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-        <option value="">Selecciona una categoría</option>
-        <option value="1ª Categoría">1ª Categoría</option>
-        <option value="2ª Categoría">2ª Categoría</option>
-        <option value="3ª Categoría">3ª Categoría</option>
-        <option value="4ª Categoría">4ª Categoría</option>
-        <option value="Sub-14">Sub-14</option>
-        <option value="Sub-16">Sub-16</option>
-        <option value="Sub-18">Sub-18</option>
-        <option value="+35 años">+35 años</option>
-        <option value="+45 años">+45 años</option>
-        <option value="+55 años">+55 años</option>
+
+    <div class="mb-6">
+      <label for="club" class="block text-gray-700 font-semibold mb-2">Club *</label>
+      <input type="text" id="club" name="club" required minlength="2" maxlength="100" placeholder="Nombre del club de tenis" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="club-error">El nombre del club debe tener entre 2 y 100 caracteres</div>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Información del Torneo</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label for="año" class="block text-gray-700 font-semibold mb-2">Año *</label>
+          <select id="año" name="año" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+            <option value="">Selecciona año</option>
+            <option value="2025" selected={prefilledAño === '2025'}>2025</option>
+            <option value="2024" selected={prefilledAño === '2024'}>2024</option>
+            <option value="2023" selected={prefilledAño === '2023'}>2023</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="torneo" class="block text-gray-700 font-semibold mb-2">Torneo *</label>
+          <select id="torneo" name="torneo" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+            <option value="">Selecciona torneo</option>
+            <option value="Copa Litoral 2025" selected={prefilledTorneo === 'Copa Litoral 2025'}>Copa Litoral 2025</option>
+            <option value="Copa Litoral Verano 2025" selected={prefilledTorneo === 'Copa Litoral Verano 2025'}>Copa Litoral Verano 2025</option>
+            <option value="Copa Litoral Juvenil 2025" selected={prefilledTorneo === 'Copa Litoral Juvenil 2025'}>Copa Litoral Juvenil 2025</option>
+            <option value="Copa Litoral Masters 2025" selected={prefilledTorneo === 'Copa Litoral Masters 2025'}>Copa Litoral Masters 2025</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="categoria" class="block text-gray-700 font-semibold mb-2">Categoría *</label>
+          <select id="categoria" name="categoria" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+            <option value="">Selecciona categoría</option>
+            <option value="1ª Categoría" selected={prefilledCategoria === '1ª Categoría'}>1ª Categoría</option>
+            <option value="2ª Categoría" selected={prefilledCategoria === '2ª Categoría'}>2ª Categoría</option>
+            <option value="3ª Categoría" selected={prefilledCategoria === '3ª Categoría'}>3ª Categoría</option>
+            <option value="4ª Categoría" selected={prefilledCategoria === '4ª Categoría'}>4ª Categoría</option>
+            <option value="Sub-14" selected={prefilledCategoria === 'Sub-14'}>Sub-14</option>
+            <option value="Sub-16" selected={prefilledCategoria === 'Sub-16'}>Sub-16</option>
+            <option value="Sub-18" selected={prefilledCategoria === 'Sub-18'}>Sub-18</option>
+            <option value="+35 años" selected={prefilledCategoria === '+35 años'}>+35 años</option>
+            <option value="+45 años" selected={prefilledCategoria === '+45 años'}>+45 años</option>
+            <option value="+55 años" selected={prefilledCategoria === '+55 años'}>+55 años</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <label for="estado" class="block text-gray-700 font-semibold mb-2">Estado de Inscripción *</label>
+      <select id="estado" name="estado" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+        <option value="">Selecciona estado</option>
+        <option value="inscrito">Inscrito</option>
+        <option value="pendiente" selected>Pendiente</option>
+        <option value="rechazado">Rechazado</option>
       </select>
     </div>
     
-    <div class="flex space-x-4">
-      <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-        Crear Jugador
-      </button>
-      <a href="/admin/jugadores" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+    <div class="flex justify-end space-x-4">
+      <a href="/admin/jugadores" class="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-200">
         Cancelar
       </a>
+      <button type="submit" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+        Crear Jugador
+      </button>
     </div>
   </form>
   
+  
+  <Toast />
+
   <script>
-    document.getElementById('playerForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // Form validation
+    const form = document.getElementById('playerForm');
+    const inputs = form.querySelectorAll('input, select');
+    
+    // Validation patterns
+    const patterns = {
+      nombre: /^[A-Za-zÀ-ÿ\s]{2,50}$/,
+      apellido: /^[A-Za-zÀ-ÿ\s]{2,50}$/,
+      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      telefono: /^(\+?56)?[0-9]{8,9}$/,
+      club: /^.{2,100}$/
+    };
+
+    // Error messages
+    const errorMessages = {
+      nombre: 'El nombre debe tener entre 2 y 50 caracteres y solo contener letras',
+      apellido: 'El apellido debe tener entre 2 y 50 caracteres y solo contener letras',
+      email: 'Ingresa un email válido',
+      telefono: 'Ingresa un teléfono válido (8-9 dígitos, opcionalmente con +56)',
+      club: 'El nombre del club debe tener entre 2 y 100 caracteres',
+      año: 'Selecciona un año',
+      torneo: 'Selecciona un torneo',
+      categoria: 'Selecciona una categoría'
+    };
+
+    // Validate individual field
+    function validateField(field) {
+      const value = field.value.trim();
+      const name = field.name;
+      const errorElement = document.getElementById(`${name}-error`);
       
-      const formData = new FormData(e.target);
-      const data = {
-        id: Date.now().toString(),
-        name: formData.get('name'),
-        email: formData.get('email'),
-        club: formData.get('club'),
-        category: formData.get('category')
-      };
-      
-      try {
-        const response = await fetch('/api/jugadores/create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-        
-        if (response.ok) {
-          alert('Jugador creado correctamente');
-          window.location.href = '/admin/jugadores';
+      let isValid = true;
+      let errorMessage = '';
+
+      // Check if required field is empty
+      if (field.required && !value) {
+        isValid = false;
+        errorMessage = `${field.labels[0]?.textContent.replace('*', '').trim()} es requerido`;
+      }
+      // Check pattern for specific fields
+      else if (value && patterns[name] && !patterns[name].test(value)) {
+        isValid = false;
+        errorMessage = errorMessages[name];
+      }
+      // Check select fields
+      else if (field.tagName === 'SELECT' && field.required && !value) {
+        isValid = false;
+        errorMessage = errorMessages[name];
+      }
+
+      // Show/hide error message
+      if (errorElement) {
+        if (isValid) {
+          errorElement.classList.add('hidden');
+          field.classList.remove('border-red-500');
+          field.classList.add('border-gray-300');
         } else {
-          alert('Error al crear el jugador');
+          errorElement.textContent = errorMessage;
+          errorElement.classList.remove('hidden');
+          field.classList.add('border-red-500');
+          field.classList.remove('border-gray-300');
         }
-      } catch (error) {
-        alert('Error de conexión: ' + error.message);
+      }
+
+      return isValid;
+    }
+
+    // Add real-time validation
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('border-red-500')) {
+          validateField(input);
+        }
+      });
+    });
+
+    // Form submission validation
+    form.addEventListener('submit', (e) => {
+      let isFormValid = true;
+      
+      inputs.forEach(input => {
+        if (!validateField(input)) {
+          isFormValid = false;
+        }
+      });
+
+      if (!isFormValid) {
+        e.preventDefault();
+        // Scroll to first error
+        const firstError = form.querySelector('.border-red-500');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstError.focus();
+        }
       }
     });
   </script>

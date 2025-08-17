@@ -1,0 +1,297 @@
+---
+import PublicLayout from '@layouts/PublicLayout.astro';
+
+const title = "Resultados - Copa Litoral";
+---
+
+<PublicLayout title={title}>
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="px-4 py-6 sm:px-0">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Resultados Copa Litoral</h1>
+        <p class="text-lg text-gray-600">Consulta todos los resultados de los torneos</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="mb-6 bg-white p-4 rounded-lg shadow">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Torneo</label>
+            <select id="filtro-torneo" class="mt-1 block w-full rounded-md border-gray-300">
+              <option value="">Todos los torneos</option>
+              <option value="Copa Litoral 2025">Copa Litoral 2025</option>
+              <option value="Copa Litoral Verano 2025">Copa Litoral Verano 2025</option>
+              <option value="Copa Litoral Juvenil 2025">Copa Litoral Juvenil 2025</option>
+              <option value="Copa Litoral Masters 2025">Copa Litoral Masters 2025</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Fase</label>
+            <select id="filtro-fase" class="mt-1 block w-full rounded-md border-gray-300">
+              <option value="">Todas las fases</option>
+              <option value="grupos">Fase de Grupos</option>
+              <option value="octavos">Octavos de Final</option>
+              <option value="cuartos">Cuartos de Final</option>
+              <option value="semifinal">Semifinal</option>
+              <option value="final">Final</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Grupo</label>
+            <select id="filtro-grupo" class="mt-1 block w-full rounded-md border-gray-300">
+              <option value="">Todos los grupos</option>
+              <option value="A">Grupo A</option>
+              <option value="B">Grupo B</option>
+              <option value="C">Grupo C</option>
+              <option value="D">Grupo D</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button id="btn-filtrar" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Filtrar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs de fases -->
+      <div class="mb-6">
+        <div class="border-b border-gray-200">
+          <nav class="-mb-px flex space-x-8">
+            <button class="tab-button active" data-fase="grupos">
+              <span class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Fase de Grupos</span>
+            </button>
+            <button class="tab-button" data-fase="octavos">
+              <span class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Octavos</span>
+            </button>
+            <button class="tab-button" data-fase="cuartos">
+              <span class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Cuartos</span>
+            </button>
+            <button class="tab-button" data-fase="semifinal">
+              <span class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Semifinal</span>
+            </button>
+            <button class="tab-button" data-fase="final">
+              <span class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Final</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Resultados -->
+      <div class="space-y-6">
+        <!-- Fase de Grupos -->
+        <div id="grupos-section" class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Fase de Grupos</h3>
+          </div>
+          <div class="border-t border-gray-200">
+            <div id="grupos-content" class="divide-y divide-gray-200">
+              <!-- Contenido dinámico -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase de Eliminación -->
+        <div id="eliminacion-section" class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Fase de Eliminación</h3>
+          </div>
+          <div class="border-t border-gray-200">
+            <div id="eliminacion-content" class="divide-y divide-gray-200">
+              <!-- Contenido dinámico -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay datos -->
+      <div id="no-data" class="hidden bg-white shadow rounded-lg p-8 text-center">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No hay resultados disponibles</h3>
+        <p class="text-gray-500">Los resultados se actualizarán automáticamente desde el panel administrativo</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cargar resultados
+    async function cargarResultados(faseSeleccionada = null) {
+      const torneo = document.getElementById('filtro-torneo').value;
+      const fase = faseSeleccionada || document.getElementById('filtro-fase').value;
+      const grupo = document.getElementById('filtro-grupo').value;
+      
+      let url = '/api/partidos';
+      const params = new URLSearchParams();
+      
+      if (torneo) params.append('torneo', torneo);
+      if (fase) params.append('fase', fase);
+      if (grupo) params.append('grupo', grupo);
+      
+      if (params.toString()) {
+        url += '?' + params.toString();
+      }
+      
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.success && data.data.length > 0) {
+          mostrarResultados(data.data);
+          document.getElementById('no-data').classList.add('hidden');
+        } else {
+          mostrarSinDatos();
+        }
+      } catch (error) {
+        console.error('Error al cargar resultados:', error);
+      }
+    }
+
+    function mostrarResultados(partidos) {
+      const gruposContent = document.getElementById('grupos-content');
+      const eliminacionContent = document.getElementById('eliminacion-content');
+      
+      gruposContent.innerHTML = '';
+      eliminacionContent.innerHTML = '';
+      
+      // Separar partidos por fase
+      const partidosGrupos = partidos.filter(p => p.fase === 'grupos');
+      const partidosEliminacion = partidos.filter(p => p.fase !== 'grupos');
+      
+      // Mostrar fase de grupos
+      if (partidosGrupos.length > 0) {
+        mostrarPartidosGrupos(partidosGrupos);
+      }
+      
+      // Mostrar fase de eliminación
+      if (partidosEliminacion.length > 0) {
+        mostrarPartidosEliminacion(partidosEliminacion);
+      }
+    }
+
+    function mostrarPartidosGrupos(partidos) {
+      const gruposContent = document.getElementById('grupos-content');
+      
+      // Agrupar por grupo
+      const grupos = {};
+      partidos.forEach(partido => {
+        if (!grupos[partido.grupo]) {
+          grupos[partido.grupo] = [];
+        }
+        grupos[partido.grupo].push(partido);
+      });
+      
+      Object.keys(grupos).forEach(grupo => {
+        const grupoSection = document.createElement('div');
+        grupoSection.innerHTML = `
+          <div class="px-4 py-5 sm:px-6 bg-gray-50">
+            <h4 class="text-md font-medium text-gray-900">Grupo ${grupo}</h4>
+          </div>
+          <div class="divide-y divide-gray-200">
+            ${grupos[grupo].map(partido => `
+              <div class="px-4 py-4 sm:px-6">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      ${partido.jugador1.nombre} vs ${partido.jugador2.nombre}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      ${partido.jugador1.club} vs ${partido.jugador2.club}
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-sm text-gray-900">
+                      ${partido.fecha} ${partido.hora}
+                    </div>
+                    <div class="text-sm font-medium ${partido.estado === 'finalizado' ? 'text-green-600' : 'text-gray-500'}">
+                      ${partido.resultado ? 
+                        `${partido.resultado.setsJ1}-${partido.resultado.setsJ2}` : 
+                        'Pendiente'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        gruposContent.appendChild(grupoSection);
+      });
+    }
+
+    function mostrarPartidosEliminacion(partidos) {
+      const eliminacionContent = document.getElementById('eliminacion-content');
+      
+      // Ordenar por fase
+      const ordenFases = ['octavos', 'cuartos', 'semifinal', 'final'];
+      const fases = {};
+      
+      partidos.forEach(partido => {
+        if (!fases[partido.fase]) {
+          fases[partido.fase] = [];
+        }
+        fases[partido.fase].push(partido);
+      });
+      
+      ordenFases.forEach(fase => {
+        if (fases[fase] && fases[fase].length > 0) {
+          const faseSection = document.createElement('div');
+          faseSection.innerHTML = `
+            <div class="px-4 py-5 sm:px-6 bg-gray-50">
+              <h4 class="text-md font-medium text-gray-900 capitalize">${fase.replace('_', ' ')}</h4>
+            </div>
+            <div class="divide-y divide-gray-200">
+              ${fases[fase].map(partido => `
+                <div class="px-4 py-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">
+                        ${partido.jugador1.nombre} vs ${partido.jugador2.nombre}
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        ${partido.jugador1.club} vs ${partido.jugador2.club}
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm text-gray-900">
+                        ${partido.fecha} ${partido.hora}
+                      </div>
+                      <div class="text-sm font-medium ${partido.estado === 'finalizado' ? 'text-green-600' : 'text-gray-500'}">
+                        ${partido.resultado ? 
+                          `${partido.resultado.setsJ1}-${partido.resultado.setsJ2}` : 
+                          'Pendiente'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+          eliminacionContent.appendChild(faseSection);
+        }
+      });
+    }
+
+    function mostrarSinDatos() {
+      document.getElementById('grupos-content').innerHTML = '<div class="p-4 text-center text-gray-500">No hay partidos en fase de grupos</div>';
+      document.getElementById('eliminacion-content').innerHTML = '<div class="p-4 text-center text-gray-500">No hay partidos en fase de eliminación</div>';
+      document.getElementById('no-data').classList.remove('hidden');
+    }
+
+    // Event listeners
+    document.getElementById('btn-filtrar').addEventListener('click', () => cargarResultados());
+    
+    // Tabs de fases
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        // Remover active de todos
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        // Agregar active al actual
+        e.target.classList.add('active');
+        
+        const fase = e.target.dataset.fase;
+        cargarResultados(fase);
+      });
+    });
+
+    // Cargar resultados al inicio
+    cargarResultados();
+  </script>
+</PublicLayout>

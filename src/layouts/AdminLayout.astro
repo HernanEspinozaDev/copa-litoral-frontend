@@ -1,6 +1,13 @@
 ---
 // src/layouts/AdminLayout.astro
 import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Panel de administración de Copa Litoral' } = Astro.props;
 ---
 
 <html lang="es">
@@ -9,8 +16,8 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
-    <title><slot name="title">Panel Administrativo - Copa Litoral</slot></title>
-    <meta name="description" content="Panel de administración de Copa Litoral" />
+    <title>{title} | Copa Litoral</title>
+    <meta name="description" content={description} />
     
   </head>
   <body class="bg-gray-100">

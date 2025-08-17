@@ -2,15 +2,26 @@ import type { APIRoute } from 'astro';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const dataFilePath = path.resolve(process.cwd(), 'src/data/players.json');
+const dataFilePath = path.resolve(process.cwd(), 'src/lib/data/jugadores-completo.json');
+
+async function readPlayersData() {
+  try {
+    const data = await fs.readFile(dataFilePath, 'utf-8');
+    return JSON.parse(data);
+  } catch (error) {
+    // If the file doesn't exist, return an empty array
+    if (error.code === 'ENOENT') {
+      return [];
+    }
+    throw error;
+  }
+}
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const updatedPlayer = await request.json();
     
-    // Read existing data
-    const fileContent = await fs.readFile(dataFilePath, 'utf-8');
-    let players = JSON.parse(fileContent);
+    let players = await readPlayersData();
     
     // Find and update player
     const index = players.findIndex(p => p.id === updatedPlayer.id);

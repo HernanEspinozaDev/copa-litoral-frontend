@@ -1,0 +1,5549 @@
+[
+  {
+    "id": 1,
+    "torneo": "Copa Litoral 2025",
+    "categoria": "1ª Categoría",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": 1,
+      "nombre": "Carlos Mendoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 3,
+      "nombre": "Pedro Silva",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2025-01-15",
+    "hora": "10:00",
+    "cancha": "Cancha 1",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 2,
+    "torneo": "Copa Litoral 2025",
+    "categoria": "1ª Categoría",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": 5,
+      "nombre": "Luis Martínez",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 6,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2025-01-15",
+    "hora": "11:30",
+    "cancha": "Cancha 2",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 3,
+    "torneo": "Copa Litoral 2025",
+    "categoria": "1ª Categoría",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": 7,
+      "nombre": "Alejandro Torres",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 8,
+      "nombre": "Francisco Muñoz",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2025-01-15",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 4,
+    "torneo": "Copa Litoral 2025",
+    "categoria": "2ª Categoría",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "B",
+    "jugador1": {
+      "id": 2,
+      "nombre": "María González",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 9,
+      "nombre": "Carmen López",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2025-01-16",
+    "hora": "09:00",
+    "cancha": "Cancha 3",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 5,
+    "torneo": "Copa Litoral 2025",
+    "categoria": "2ª Categoría",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "B",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Daniela Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 11,
+      "nombre": "Rodrigo Castillo",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2025-01-16",
+    "hora": "10:30",
+    "cancha": "Cancha 4",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 6,
+    "torneo": "Copa Litoral Juvenil 2025",
+    "categoria": "Sub-16",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": 21,
+      "nombre": "Diego Herrera",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 24,
+      "nombre": "Javiera Sandoval",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2025-01-20",
+    "hora": "15:00",
+    "cancha": "Cancha 2",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": 7,
+    "torneo": "Copa Litoral Masters 2025",
+    "categoria": "+35 años",
+    "año": 2025,
+    "fase": "grupos",
+    "grupo": "A",
+    "jugador1": {
+      "id": 25,
+      "nombre": "Maximiliano Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 28,
+      "nombre": "Marcela Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2025-01-25",
+    "hora": "16:00",
+    "cancha": "Cancha 1",
+    "estado": "programado",
+    "resultado": null,
+    "observaciones": ""
+  },
+  {
+    "id": "match-2024-001",
+    "jugador1Id": "101",
+    "jugador2Id": "102",
+    "jugador1": "Carlos Mendoza Silva",
+    "jugador2": "Andrea Vásquez Torres",
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fecha": "2024-05-25",
+    "hora": "10:00",
+    "cancha": "Cancha Central",
+    "fase": "Final",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-4, 6-2",
+    "ganador": "101"
+  },
+  {
+    "id": "match-2024-002",
+    "jugador1Id": "101",
+    "jugador2Id": "103",
+    "jugador1": "Carlos Mendoza Silva",
+    "jugador2": "Roberto Herrera Campos",
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fecha": "2024-05-23",
+    "hora": "14:00",
+    "cancha": "Cancha 1",
+    "fase": "Semifinal",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-3, 7-5",
+    "ganador": "101"
+  },
+  {
+    "id": "match-2024-003",
+    "jugador1Id": "104",
+    "jugador2Id": "105",
+    "jugador1": "Francisca Morales Díaz",
+    "jugador2": "Miguel Castro Rojas",
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fecha": "2024-05-24",
+    "hora": "16:00",
+    "cancha": "Cancha 2",
+    "fase": "Final",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-2, 6-4",
+    "ganador": "104"
+  },
+  {
+    "id": "match-2024-004",
+    "jugador1Id": "106",
+    "jugador2Id": "107",
+    "jugador1": "Daniela Espinoza Muñoz",
+    "jugador2": "Alejandro Fuentes López",
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fecha": "2024-05-22",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "fase": "Final",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-1, 6-3",
+    "ganador": "106"
+  },
+  {
+    "id": "match-2023-001",
+    "jugador1Id": "201",
+    "jugador2Id": "202",
+    "jugador1": "Patricia González Vargas",
+    "jugador2": "Fernando Silva Contreras",
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fecha": "2023-05-28",
+    "hora": "15:00",
+    "cancha": "Cancha Central",
+    "fase": "Final",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-4, 7-6",
+    "ganador": "201"
+  },
+  {
+    "id": "match-2023-002",
+    "jugador1Id": "202",
+    "jugador2Id": "203",
+    "jugador1": "Fernando Silva Contreras",
+    "jugador2": "Camila Ramírez Soto",
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fecha": "2023-05-26",
+    "hora": "12:00",
+    "cancha": "Cancha 1",
+    "fase": "Final",
+    "grupo": null,
+    "estado": "finalizado",
+    "resultado": "6-3, 6-2",
+    "ganador": "202"
+  },
+  {
+    "id": 300,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 101,
+      "nombre": "Carlos Mendoza Silva",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 9,
+      "nombre": "Roberto Jiménez Parra",
+      "club": "Club Unknown"
+    },
+    "fecha": "2024-05-20",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 101
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 301,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 101,
+      "nombre": "Carlos Mendoza Silva",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 102,
+      "nombre": "Andrea Vásquez Torres",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-21",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 101
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 302,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 101,
+      "nombre": "Carlos Mendoza Silva",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 103,
+      "nombre": "Roberto Herrera Campos",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-22",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 101
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 303,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 9,
+      "nombre": "Roberto Jiménez Parra",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 102,
+      "nombre": "Andrea Vásquez Torres",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-23",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 2,
+          "jugador2": 6
+        },
+        {
+          "jugador1": 3,
+          "jugador2": 6
+        }
+      ],
+      "ganador": 102
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 304,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 9,
+      "nombre": "Roberto Jiménez Parra",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 103,
+      "nombre": "Roberto Herrera Campos",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-24",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 9
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 305,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 102,
+      "nombre": "Andrea Vásquez Torres",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 103,
+      "nombre": "Roberto Herrera Campos",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-25",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 102
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 306,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 104,
+      "nombre": "Luis Ramírez Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 95,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-26",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 104
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 307,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 104,
+      "nombre": "Luis Ramírez Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 96,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-27",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 104
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 308,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 104,
+      "nombre": "Luis Ramírez Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 97,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-28",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 104
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 309,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 95,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 96,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-29",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 95
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 310,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 95,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 97,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-30",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 95
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 311,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 96,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 97,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-31",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 96
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 312,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 98,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 99,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-01",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 98
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 313,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 98,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 100,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-02",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 98
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 314,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 98,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 101,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-03",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 98
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 315,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 99,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 100,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-04",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 99
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 316,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 99,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 101,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-05",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 99
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 317,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 100,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 101,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-06",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 100
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 318,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 101,
+      "nombre": "Carlos Mendoza Silva",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 95,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-09",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 101
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 319,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 104,
+      "nombre": "Luis Ramírez Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 9,
+      "nombre": "Roberto Jiménez Parra",
+      "club": "Club Unknown"
+    },
+    "fecha": "2024-06-10",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 9
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 320,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "1ª Categoría",
+    "año": 2024,
+    "fase": "final",
+    "jugador1": {
+      "id": 101,
+      "nombre": "Carlos Mendoza Silva",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 9,
+      "nombre": "Roberto Jiménez Parra",
+      "club": "Club Unknown"
+    },
+    "fecha": "2024-06-12",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 101
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 321,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Camila Andrea Rojas Vega",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Francisca Morales Díaz",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-20",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 1,
+          "jugador2": 6
+        },
+        {
+          "jugador1": 3,
+          "jugador2": 6
+        }
+      ],
+      "ganador": 105
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 322,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Camila Andrea Rojas Vega",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 106,
+      "nombre": "Miguel Castro Rojas",
+      "club": "Club de Tenis La Serena"
+    },
+    "fecha": "2024-05-21",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 10
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 323,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Camila Andrea Rojas Vega",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 107,
+      "nombre": "Daniela Espinoza Muñoz",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2024-05-22",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 10
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 324,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 105,
+      "nombre": "Francisca Morales Díaz",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 106,
+      "nombre": "Miguel Castro Rojas",
+      "club": "Club de Tenis La Serena"
+    },
+    "fecha": "2024-05-23",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 105
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 325,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 105,
+      "nombre": "Francisca Morales Díaz",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 107,
+      "nombre": "Daniela Espinoza Muñoz",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2024-05-24",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 105
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 326,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 106,
+      "nombre": "Miguel Castro Rojas",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 107,
+      "nombre": "Daniela Espinoza Muñoz",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2024-05-25",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 106
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 327,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 102,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 103,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-26",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 102
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 328,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 102,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 104,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-27",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 102
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 329,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 102,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-28",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 102
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 330,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 103,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 104,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-05-29",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 103
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 331,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 103,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-30",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 103
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 332,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 104,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-31",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 104
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 333,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 106,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 107,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-01",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 106
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 334,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 106,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 108,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-02",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 106
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 335,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 106,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-03",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 106
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 336,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 107,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 108,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-04",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 107
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 337,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 107,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-05",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 107
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 338,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-06",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 339,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Camila Andrea Rojas Vega",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 103,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-09",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 10
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 340,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 102,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Francisca Morales Díaz",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-10",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 105
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 341,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "2ª Categoría",
+    "año": 2024,
+    "fase": "final",
+    "jugador1": {
+      "id": 10,
+      "nombre": "Camila Andrea Rojas Vega",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 105,
+      "nombre": "Francisca Morales Díaz",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2024-06-12",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 105
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 342,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 11,
+      "nombre": "Sebastián Muñoz Contreras",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 201,
+      "nombre": "Patricia González Vargas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-15",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 0,
+          "jugador2": 6
+        },
+        {
+          "jugador1": 1,
+          "jugador2": 6
+        }
+      ],
+      "ganador": 201
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 343,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 11,
+      "nombre": "Sebastián Muñoz Contreras",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 202,
+      "nombre": "Fernando Silva Contreras",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-16",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 11
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 344,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 11,
+      "nombre": "Sebastián Muñoz Contreras",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 203,
+      "nombre": "Ricardo Morales Díaz",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-17",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 11
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 345,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 201,
+      "nombre": "Patricia González Vargas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 202,
+      "nombre": "Fernando Silva Contreras",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-18",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 201
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 346,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 201,
+      "nombre": "Patricia González Vargas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 203,
+      "nombre": "Ricardo Morales Díaz",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-19",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 201
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 347,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 202,
+      "nombre": "Fernando Silva Contreras",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 203,
+      "nombre": "Ricardo Morales Díaz",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-20",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 202
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 348,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 68,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 69,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-21",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 68
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 349,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 68,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 70,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-22",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 68
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 350,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 68,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 71,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-23",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 68
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 351,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 69,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 70,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-24",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 69
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 352,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 69,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 71,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-25",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 69
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 353,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 70,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 71,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-26",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 70
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 354,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 72,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 73,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-27",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 72
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 355,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 72,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 74,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-28",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 72
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 356,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 72,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 75,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-29",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 72
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 357,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 73,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 74,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-30",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 73
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 358,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 73,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 75,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-31",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 73
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 359,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 74,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 75,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-06-01",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 74
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 360,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 11,
+      "nombre": "Sebastián Muñoz Contreras",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 69,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-06-04",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 11
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 361,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 68,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 201,
+      "nombre": "Patricia González Vargas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-06-05",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 201
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 362,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "1ª Categoría",
+    "año": 2023,
+    "fase": "final",
+    "jugador1": {
+      "id": 11,
+      "nombre": "Sebastián Muñoz Contreras",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 201,
+      "nombre": "Patricia González Vargas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-06-07",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 201
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 363,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 206,
+      "nombre": "Sofía Herrera Campos",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 207,
+      "nombre": "Diego Espinoza Muñoz",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-15",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 206
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 364,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 206,
+      "nombre": "Sofía Herrera Campos",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 12,
+      "nombre": "Francisca Torres Espinoza",
+      "club": "Club Unknown"
+    },
+    "fecha": "2023-05-16",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 206
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 365,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 206,
+      "nombre": "Sofía Herrera Campos",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 86,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-17",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 206
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 366,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 207,
+      "nombre": "Diego Espinoza Muñoz",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 12,
+      "nombre": "Francisca Torres Espinoza",
+      "club": "Club Unknown"
+    },
+    "fecha": "2023-05-18",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 207
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 367,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 207,
+      "nombre": "Diego Espinoza Muñoz",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 86,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-19",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 207
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 368,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 12,
+      "nombre": "Francisca Torres Espinoza",
+      "club": "Club Unknown"
+    },
+    "jugador2": {
+      "id": 86,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-20",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 12
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 369,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 87,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 88,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-21",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 87
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 370,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 87,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 89,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-22",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 87
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 371,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 87,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 90,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-23",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 87
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 372,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 88,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 89,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-24",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 88
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 373,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 88,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 90,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-25",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 88
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 374,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 89,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 90,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-26",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 89
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 375,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 91,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 92,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-05-27",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 91
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 376,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 91,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 93,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-28",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 91
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 377,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 91,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 94,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-29",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 91
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 378,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 92,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 93,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-30",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 92
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 379,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 92,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 94,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-31",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 92
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 380,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 93,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 94,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-06-01",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 93
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 381,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 206,
+      "nombre": "Sofía Herrera Campos",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 88,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "fecha": "2023-06-04",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 206
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 382,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 87,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 207,
+      "nombre": "Diego Espinoza Muñoz",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-06-05",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 207
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 383,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "3ª Categoría",
+    "año": 2023,
+    "fase": "final",
+    "jugador1": {
+      "id": 206,
+      "nombre": "Sofía Herrera Campos",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 207,
+      "nombre": "Diego Espinoza Muñoz",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-06-07",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 206
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 384,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Alejandro Fuentes López",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Carolina Silva Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-20",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 385,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Alejandro Fuentes López",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 110,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-21",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 386,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Alejandro Fuentes López",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-22",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 387,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 109,
+      "nombre": "Carolina Silva Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 110,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-23",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 109
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 388,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 109,
+      "nombre": "Carolina Silva Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-24",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 109
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 389,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-25",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 390,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 112,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 113,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-26",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 112
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 391,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 112,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 114,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-27",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 112
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 392,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 112,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 115,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-28",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 112
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 393,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 113,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 114,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-29",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 113
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 394,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 113,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 115,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-30",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 113
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 395,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 114,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 115,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-31",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 114
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 396,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 116,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 117,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-01",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 116
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 397,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 116,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 118,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-02",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 116
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 398,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 116,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 119,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-03",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 116
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 399,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 117,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 118,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-04",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 117
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 400,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 117,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 119,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-05",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 117
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 401,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 118,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 119,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-06",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 118
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 402,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Alejandro Fuentes López",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 113,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-09",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 403,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 112,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Carolina Silva Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-10",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 109
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 404,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "3ª Categoría",
+    "año": 2024,
+    "fase": "final",
+    "jugador1": {
+      "id": 108,
+      "nombre": "Alejandro Fuentes López",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 109,
+      "nombre": "Carolina Silva Contreras",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-12",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 108
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 405,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Sebastián González Vargas",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Valentina Herrera Mendoza",
+      "club": "Club de Tenis La Serena"
+    },
+    "fecha": "2024-05-20",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 406,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Sebastián González Vargas",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 120,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-21",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 407,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Sebastián González Vargas",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 121,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-22",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 408,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 111,
+      "nombre": "Valentina Herrera Mendoza",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 120,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-23",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 111
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 409,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 111,
+      "nombre": "Valentina Herrera Mendoza",
+      "club": "Club de Tenis La Serena"
+    },
+    "jugador2": {
+      "id": 121,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-24",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 111
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 410,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 120,
+      "nombre": "Roberto Vargas",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 121,
+      "nombre": "Diego Fuentes",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-25",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 120
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 411,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 122,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 123,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-05-26",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 122
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 412,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 122,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 124,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-27",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 122
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 413,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 122,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 125,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-28",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 122
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 414,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 123,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 124,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-05-29",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 123
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 415,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 123,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 125,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-30",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 123
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 416,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 124,
+      "nombre": "Sebastián Espinoza",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 125,
+      "nombre": "Joaquín Cortés",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-05-31",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 124
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 417,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 126,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 127,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-01",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 126
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 418,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 126,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 128,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-02",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 126
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 419,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 126,
+      "nombre": "Felipe Reyes",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 129,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-03",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 126
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 420,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 127,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 128,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2024-06-04",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 127
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 421,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 127,
+      "nombre": "Nicolás Muñoz",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 129,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-05",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 127
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 422,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 128,
+      "nombre": "Tomás Jiménez",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 129,
+      "nombre": "Maximiliano Peña",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2024-06-06",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 128
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 423,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Sebastián González Vargas",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 123,
+      "nombre": "Matías Ramos",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2024-06-09",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 424,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 122,
+      "nombre": "Andrés Navarro",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Valentina Herrera Mendoza",
+      "club": "Club de Tenis La Serena"
+    },
+    "fecha": "2024-06-10",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 111
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 425,
+    "torneo": "Copa Litoral 2024",
+    "categoria": "4ª Categoría",
+    "año": 2024,
+    "fase": "final",
+    "jugador1": {
+      "id": 110,
+      "nombre": "Sebastián González Vargas",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 111,
+      "nombre": "Valentina Herrera Mendoza",
+      "club": "Club de Tenis La Serena"
+    },
+    "fecha": "2024-06-12",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 110
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 426,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 204,
+      "nombre": "Camila Ramírez Soto",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 205,
+      "nombre": "Andrés Castro Rojas",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2023-05-15",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 204
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 427,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 204,
+      "nombre": "Camila Ramírez Soto",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 76,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-16",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 204
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 428,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 204,
+      "nombre": "Camila Ramírez Soto",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 77,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-17",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 204
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 429,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 205,
+      "nombre": "Andrés Castro Rojas",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 76,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-18",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 205
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 430,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 205,
+      "nombre": "Andrés Castro Rojas",
+      "club": "Club de Tenis Montemar"
+    },
+    "jugador2": {
+      "id": 77,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-19",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 205
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 431,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 76,
+      "nombre": "Roberto Fernández",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 77,
+      "nombre": "Diego Vega",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-20",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 76
+    },
+    "observaciones": "",
+    "grupo": "A"
+  },
+  {
+    "id": 432,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 78,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 79,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-21",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 78
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 433,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 78,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 80,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-22",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 78
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 434,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 78,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 81,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-23",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 78
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 435,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 79,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 80,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-24",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 79
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 436,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 79,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 81,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-25",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 79
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 437,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 80,
+      "nombre": "Sebastián Castillo",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 81,
+      "nombre": "Joaquín Soto",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-26",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 80
+    },
+    "observaciones": "",
+    "grupo": "B"
+  },
+  {
+    "id": 438,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 82,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 83,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-05-27",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 82
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 439,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 82,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 84,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-28",
+    "hora": "16:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 82
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 440,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 82,
+      "nombre": "Felipe Bravo",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 85,
+      "nombre": "Maximiliano Torres",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-29",
+    "hora": "9:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        }
+      ],
+      "ganador": 82
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 441,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 83,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 84,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "fecha": "2023-05-30",
+    "hora": "10:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 83
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 442,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 83,
+      "nombre": "Nicolás Mendoza",
+      "club": "Club de Tenis San Antonio"
+    },
+    "jugador2": {
+      "id": 85,
+      "nombre": "Maximiliano Torres",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-05-31",
+    "hora": "11:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 83
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 443,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "grupos",
+    "jugador1": {
+      "id": 84,
+      "nombre": "Tomás Parra",
+      "club": "Club de Tenis Valparaíso"
+    },
+    "jugador2": {
+      "id": 85,
+      "nombre": "Maximiliano Torres",
+      "club": "Club de Tenis Viña del Mar"
+    },
+    "fecha": "2023-06-01",
+    "hora": "12:00",
+    "cancha": "Cancha 4",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 3
+        }
+      ],
+      "ganador": 84
+    },
+    "observaciones": "",
+    "grupo": "C"
+  },
+  {
+    "id": 444,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 204,
+      "nombre": "Camila Ramírez Soto",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 79,
+      "nombre": "Matías Rojas",
+      "club": "Club de Tenis San Antonio"
+    },
+    "fecha": "2023-06-04",
+    "hora": "13:00",
+    "cancha": "Cancha 1",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 0
+        }
+      ],
+      "ganador": 204
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 445,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "semifinales",
+    "jugador1": {
+      "id": 78,
+      "nombre": "Andrés Herrera",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 205,
+      "nombre": "Andrés Castro Rojas",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2023-06-05",
+    "hora": "14:00",
+    "cancha": "Cancha 2",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 2
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 1
+        }
+      ],
+      "ganador": 205
+    },
+    "observaciones": ""
+  },
+  {
+    "id": 446,
+    "torneo": "Copa Litoral 2023",
+    "categoria": "2ª Categoría",
+    "año": 2023,
+    "fase": "final",
+    "jugador1": {
+      "id": 204,
+      "nombre": "Camila Ramírez Soto",
+      "club": "Club de Tenis Quilpué"
+    },
+    "jugador2": {
+      "id": 205,
+      "nombre": "Andrés Castro Rojas",
+      "club": "Club de Tenis Montemar"
+    },
+    "fecha": "2023-06-07",
+    "hora": "15:00",
+    "cancha": "Cancha 3",
+    "estado": "finalizado",
+    "resultado": {
+      "sets": [
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        },
+        {
+          "jugador1": 6,
+          "jugador2": 4
+        }
+      ],
+      "ganador": 204
+    },
+    "observaciones": ""
+  }
+]

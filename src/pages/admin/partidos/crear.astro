@@ -1,0 +1,339 @@
+---
+import AdminLayout from '@layouts/AdminLayout.astro';
+import Toast from '@components/Toast.astro';
+
+// Handle form submission
+if (Astro.request.method === 'POST') {
+  try {
+    const formData = await Astro.request.formData();
+    const partido = {
+      id: Date.now().toString(),
+      torneo: formData.get('torneo'),
+      categoria: formData.get('categoria'),
+      jugador1: formData.get('jugador1'),
+      jugador2: formData.get('jugador2'),
+      fecha: formData.get('fecha'),
+      hora: formData.get('hora'),
+      cancha: formData.get('cancha'),
+      fase: formData.get('fase'),
+      estado: 'programado'
+    };
+    
+    const response = await fetch(`${Astro.url.origin}/api/partidos/crear`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(partido)
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      return Astro.redirect('/admin/partidos');
+    } else {
+      console.error('Error creating match:', result.error);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+---
+
+<AdminLayout title="Crear Partido" description="Programa un nuevo partido entre jugadores registrados">
+  <div class="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-6 mb-8 text-white">
+    <h1 class="text-3xl font-bold mb-2">Crear Nuevo Partido</h1>
+    <p class="text-green-100">Programa un nuevo partido entre jugadores registrados</p>
+  </div>
+
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+      <form method="POST" class="space-y-8">
+        <!-- Información del Torneo -->
+        <div class="bg-gray-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-2 0h-4m-2 0h-4m-2 0H3m2-2V7a2 2 0 012-2h10a2 2 0 012 2v12M9 7h6m-6 4h6m-6 4h6" />
+            </svg>
+            Selección de Torneo y Categoría
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="torneo" class="block text-gray-700 font-semibold mb-2">Torneo *</label>
+              <select id="torneo" name="torneo" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar torneo...</option>
+              </select>
+            </div>
+            <div>
+              <label for="categoria" class="block text-gray-700 font-semibold mb-2">Categoría *</label>
+              <select id="categoria" name="categoria" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar categoría...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selección de Jugadores -->
+        <div class="bg-blue-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+            </svg>
+            Jugadores del Partido
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="jugador1" class="block text-gray-700 font-semibold mb-2">Jugador 1 *</label>
+              <select id="jugador1" name="jugador1" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar jugador...</option>
+              </select>
+            </div>
+            <div>
+              <label for="jugador2" class="block text-gray-700 font-semibold mb-2">Jugador 2 *</label>
+              <select id="jugador2" name="jugador2" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar jugador...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información del Partido -->
+        <div class="bg-orange-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Programación del Partido
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label for="fecha" class="block text-gray-700 font-semibold mb-2">Fecha *</label>
+              <input type="date" id="fecha" name="fecha" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+            </div>
+            <div>
+              <label for="hora" class="block text-gray-700 font-semibold mb-2">Hora *</label>
+              <input type="time" id="hora" name="hora" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+            </div>
+            <div>
+              <label for="cancha" class="block text-gray-700 font-semibold mb-2">Cancha *</label>
+              <select id="cancha" name="cancha" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar cancha...</option>
+                <option value="Cancha 1">Cancha 1</option>
+                <option value="Cancha 2">Cancha 2</option>
+                <option value="Cancha 3">Cancha 3</option>
+                <option value="Cancha 4">Cancha 4</option>
+                <option value="Cancha Central">Cancha Central</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase del Torneo -->
+        <div class="bg-purple-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Fase del Torneo
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="fase" class="block text-gray-700 font-semibold mb-2">Fase *</label>
+              <select id="fase" name="fase" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                <option value="">Seleccionar fase...</option>
+                <option value="grupos">Fase de Grupos</option>
+                <option value="octavos">Octavos de Final</option>
+                <option value="cuartos">Cuartos de Final</option>
+                <option value="semifinal">Semifinal</option>
+                <option value="final">Final</option>
+              </select>
+            </div>
+            <div>
+              <label for="grupo" class="block text-gray-700 font-semibold mb-2">Grupo (opcional)</label>
+              <select id="grupo" name="grupo" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                <option value="">Sin grupo</option>
+                <option value="A">Grupo A</option>
+                <option value="B">Grupo B</option>
+                <option value="C">Grupo C</option>
+                <option value="D">Grupo D</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Observaciones -->
+        <div class="mb-8">
+          <label for="observaciones" class="block text-gray-700 font-semibold mb-2">Observaciones</label>
+          <textarea id="observaciones" name="observaciones" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all" placeholder="Observaciones adicionales sobre el partido..."></textarea>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex justify-end space-x-4">
+          <a href="/admin/partidos" class="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-200">
+            Cancelar
+          </a>
+          <button type="submit" class="px-8 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            Crear Partido
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <Toast />
+
+  <script>
+    let torneos = [];
+    let jugadoresOrganizados = {};
+
+    // Cargar datos iniciales
+    async function cargarDatos() {
+      try {
+        // Cargar torneos
+        const torneosResponse = await fetch('/api/tournaments-data');
+        const torneosData = await torneosResponse.json();
+        torneos = torneosData;
+        
+        // Cargar jugadores organizados
+        const jugadoresResponse = await fetch('/api/jugadores-organizados');
+        const jugadoresData = await jugadoresResponse.json();
+        jugadoresOrganizados = jugadoresData.data || {};
+        
+        // Llenar select de torneos
+        llenarSelectTorneos();
+      } catch (error) {
+        console.error('Error cargando datos:', error);
+        mostrarToast('Error cargando datos', 'error');
+      }
+    }
+
+    function llenarSelectTorneos() {
+      const selectTorneo = document.getElementById('torneo');
+      selectTorneo.innerHTML = '<option value="">Seleccionar torneo...</option>';
+      
+      torneos.forEach(torneo => {
+        if (torneo.estado === 'inscripciones-abiertas' || torneo.estado === 'en-curso') {
+          const option = document.createElement('option');
+          option.value = torneo.titulo;
+          option.textContent = `${torneo.titulo} (${torneo.anio})`;
+          selectTorneo.appendChild(option);
+        }
+      });
+    }
+
+    // Manejar cambio de torneo
+    document.getElementById('torneo').addEventListener('change', function() {
+      const torneoSeleccionado = this.value;
+      const selectCategoria = document.getElementById('categoria');
+      
+      selectCategoria.innerHTML = '<option value="">Seleccionar categoría...</option>';
+      
+      if (torneoSeleccionado) {
+        const torneo = torneos.find(t => t.titulo === torneoSeleccionado);
+        if (torneo && torneo.categorias) {
+          torneo.categorias.forEach(categoria => {
+            const option = document.createElement('option');
+            option.value = categoria.nombre;
+            option.textContent = categoria.nombre;
+            selectCategoria.appendChild(option);
+          });
+        }
+      }
+      
+      // Limpiar jugadores
+      document.getElementById('jugador1').innerHTML = '<option value="">Seleccionar jugador...</option>';
+      document.getElementById('jugador2').innerHTML = '<option value="">Seleccionar jugador...</option>';
+    });
+
+    // Manejar cambio de categoría
+    document.getElementById('categoria').addEventListener('change', function() {
+      const torneoSeleccionado = document.getElementById('torneo').value;
+      const categoriaSeleccionada = this.value;
+      
+      if (torneoSeleccionado && categoriaSeleccionada) {
+        llenarSelectJugadores(torneoSeleccionado, categoriaSeleccionada);
+      }
+    });
+
+    function llenarSelectJugadores(torneo, categoria) {
+      const selectJugador1 = document.getElementById('jugador1');
+      const selectJugador2 = document.getElementById('jugador2');
+      
+      selectJugador1.innerHTML = '<option value="">Seleccionar jugador...</option>';
+      selectJugador2.innerHTML = '<option value="">Seleccionar jugador...</option>';
+      
+      // Buscar jugadores en la estructura organizada
+      Object.keys(jugadoresOrganizados).forEach(año => {
+        if (jugadoresOrganizados[año][torneo] && jugadoresOrganizados[año][torneo].categorias[categoria]) {
+          const jugadores = jugadoresOrganizados[año][torneo].categorias[categoria];
+          
+          jugadores.forEach(jugador => {
+            if (jugador.estado === 'activo') {
+              const option1 = document.createElement('option');
+              option1.value = jugador.id;
+              option1.textContent = `${jugador.nombre} ${jugador.apellido}`;
+              selectJugador1.appendChild(option1);
+              
+              const option2 = document.createElement('option');
+              option2.value = jugador.id;
+              option2.textContent = `${jugador.nombre} ${jugador.apellido}`;
+              selectJugador2.appendChild(option2);
+            }
+          });
+        }
+      });
+    }
+
+    // Evitar que se seleccione el mismo jugador
+    document.getElementById('jugador1').addEventListener('change', function() {
+      const jugador1Id = this.value;
+      const selectJugador2 = document.getElementById('jugador2');
+      
+      Array.from(selectJugador2.options).forEach(option => {
+        option.disabled = option.value === jugador1Id && option.value !== '';
+      });
+    });
+
+    document.getElementById('jugador2').addEventListener('change', function() {
+      const jugador2Id = this.value;
+      const selectJugador1 = document.getElementById('jugador1');
+      
+      Array.from(selectJugador1.options).forEach(option => {
+        option.disabled = option.value === jugador2Id && option.value !== '';
+      });
+    });
+
+    // Form submission is now handled server-side with Astro.redirect
+
+    function obtenerDatosJugador(jugadorId) {
+      // Buscar el jugador en la estructura organizada
+      for (const año in jugadoresOrganizados) {
+        for (const torneo in jugadoresOrganizados[año]) {
+          for (const categoria in jugadoresOrganizados[año][torneo].categorias) {
+            const jugadores = jugadoresOrganizados[año][torneo].categorias[categoria];
+            const jugador = jugadores.find(j => j.id === jugadorId);
+            if (jugador) {
+              return {
+                id: jugador.id,
+                nombre: jugador.nombre,
+                apellido: jugador.apellido,
+                email: jugador.email,
+                telefono: jugador.telefono
+              };
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    function mostrarToast(mensaje, tipo = 'info') {
+      window.dispatchEvent(new CustomEvent('mostrar-toast', {
+        detail: { mensaje, tipo }
+      }));
+    }
+
+    // Cargar datos al iniciar
+    cargarDatos();
+  </script>
+</AdminLayout>

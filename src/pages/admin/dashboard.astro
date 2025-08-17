@@ -1,55 +1,100 @@
 ---
 // src/pages/admin/dashboard.astro
 import AdminLayout from '@layouts/AdminLayout.astro';
-import { getTournaments, getPlayers, getMatches, getContactRecords, getSponsors } from '@lib/database';
 
-// Obtener datos reales de la base de datos
-const tournaments = getTournaments();
-const players = getPlayers();
-const matches = getMatches();
-const contactRecords = getContactRecords() || [];
-const sponsors = getSponsors();
+// Fetch data from synchronized endpoints
+const [torneosResponse, jugadoresResponse, partidosResponse] = await Promise.all([
+  fetch(`${Astro.url.origin}/api/tournaments-data`),
+  fetch(`${Astro.url.origin}/api/jugadores-organizados`),
+  fetch(`${Astro.url.origin}/api/partidos`)
+]);
 
-// Calcular estadísticas
-const stats = {
-  tournaments: tournaments.length,
-  players: players.length,
-  matches: matches.length,
-  sponsors: sponsors.length
-};
+const torneos = await torneosResponse.json();
+const { data: jugadoresOrganizados } = await jugadoresResponse.json();
+const { success, data: partidos } = await partidosResponse.json();
 
-// Obtener torneos activos (los que tienen fecha futura)
+// Calculate statistics
 const currentDate = new Date();
-const activeTournaments = tournaments
-  .filter(tournament => new Date(tournament.date) >= currentDate)
-  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-  .slice(0, 3);
+const currentYear = currentDate.getFullYear();
 
-// Obtener últimos jugadores registrados
-const recentPlayers = [...players]
-  .sort((a, b) => new Date(b.id).getTime() - new Date(a.id).getTime())
-  .slice(0, 5);
+// Tournament statistics
+const torneosActivos = torneos.filter(t => 
+  t.estado === 'inscripciones-abiertas' || t.estado === 'en-juego'
+);
+const torneosProximos = torneos.filter(t => t.estado === 'proximamente');
+const torneosFfinalizados = torneos.filter(t => t.estado === 'finalizado');
 
-// Obtener últimos partidos
-const recentMatches = [...matches]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 5);
+// Player statistics - count all players across all tournaments
+let totalJugadores = 0;
+let jugadoresEsteAno = 0;
+let jugadoresPorCategoria = {};
+let jugadoresPorEstado = { inscrito: 0, pendiente: 0, rechazado: 0 };
 
-// Calcular estadísticas adicionales
-const matchesThisMonth = matches.filter(match => {
-  const matchDate = new Date(match.date);
-  return matchDate.getMonth() === currentDate.getMonth() &&
-         matchDate.getFullYear() === currentDate.getFullYear();
-}).length;
+Object.values(jugadoresOrganizados).forEach(anio => {
+  Object.values(anio).forEach(torneo => {
+    Object.values(torneo).forEach(categoria => {
+      if (Array.isArray(categoria)) {
+        totalJugadores += categoria.length;
+        
+        // Count by year
+        if (parseInt(Object.keys(jugadoresOrganizados).find(year => 
+          jugadoresOrganizados[year][Object.keys(anio).find(t => anio[t] === torneo)]
+        )) === currentYear) {
+          jugadoresEsteAno += categoria.length;
+        }
+        
+        // Count by category and status
+        categoria.forEach(jugador => {
+          const cat = jugador.categoria || 'Sin categoría';
+          jugadoresPorCategoria[cat] = (jugadoresPorCategoria[cat] || 0) + 1;
+          
+          const estado = jugador.estado || 'pendiente';
+          jugadoresPorEstado[estado] = (jugadoresPorEstado[estado] || 0) + 1;
+        });
+      }
+    });
+  });
+});
 
-const playersThisMonth = players.filter(player => {
-  const playerDate = new Date(player.id);
-  return playerDate.getMonth() === currentDate.getMonth() &&
-         playerDate.getFullYear() === currentDate.getFullYear();
-}).length;
+// Match statistics
+const totalPartidos = success ? partidos.length : 0;
+const partidosEsteAno = success ? partidos.filter(p => {
+  const matchYear = new Date(p.fecha).getFullYear();
+  return matchYear === currentYear;
+}).length : 0;
+
+// Recent activity
+const ultimosJugadores = [];
+Object.entries(jugadoresOrganizados).forEach(([anio, torneoData]) => {
+  Object.entries(torneoData).forEach(([torneoNombre, categorias]) => {
+    Object.entries(categorias).forEach(([categoria, jugadores]) => {
+      if (Array.isArray(jugadores)) {
+        jugadores.forEach(jugador => {
+          ultimosJugadores.push({
+            ...jugador,
+            torneo: torneoNombre,
+            anio: anio
+          });
+        });
+      }
+    });
+  });
+});
+
+// Sort by most recent (using ID as timestamp)
+ultimosJugadores.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+const recentPlayers = ultimosJugadores.slice(0, 5);
+
+// Recent matches
+const recentMatches = success ? partidos
+  .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+  .slice(0, 5) : [];
+
+// Active tournaments for display
+const activeTournaments = torneosActivos.slice(0, 3);
 ---
 
-<AdminLayout>
+<AdminLayout title="Dashboard" description="Panel de control con estadísticas y datos en tiempo real">
   <!-- Resumen de Estadísticas -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
     <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
@@ -60,14 +105,14 @@ const playersThisMonth = players.filter(player => {
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-600">Torneos Activos</p>
-          <p class="text-2xl font-bold text-gray-900">{stats.tournaments}</p>
+          <p class="text-sm font-medium text-gray-600">Torneos Totales</p>
+          <p class="text-2xl font-bold text-gray-900">{torneos.length}</p>
         </div>
       </div>
       <div class="mt-4">
         <div class="flex items-center">
-          <span class="text-green-500 text-sm font-medium">↑ 12%</span>
-          <span class="text-gray-500 text-sm ml-2">vs mes anterior</span>
+          <span class="text-blue-500 text-sm font-medium">{torneosActivos.length} activos</span>
+          <span class="text-gray-500 text-sm ml-2">• {torneosProximos.length} próximos</span>
         </div>
       </div>
     </div>
@@ -81,13 +126,13 @@ const playersThisMonth = players.filter(player => {
         </div>
         <div>
           <p class="text-sm font-medium text-gray-600">Jugadores Registrados</p>
-          <p class="text-2xl font-bold text-gray-900">{stats.players}</p>
+          <p class="text-2xl font-bold text-gray-900">{totalJugadores}</p>
         </div>
       </div>
       <div class="mt-4">
         <div class="flex items-center">
-          <span class="text-green-500 text-sm font-medium">↑ 8%</span>
-          <span class="text-gray-500 text-sm ml-2">vs mes anterior</span>
+          <span class="text-green-500 text-sm font-medium">{jugadoresEsteAno} este año</span>
+          <span class="text-gray-500 text-sm ml-2">• {jugadoresPorEstado.inscrito} inscritos</span>
         </div>
       </div>
     </div>
@@ -100,14 +145,14 @@ const playersThisMonth = players.filter(player => {
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-600">Partidos Jugados</p>
-          <p class="text-2xl font-bold text-gray-900">{stats.matches}</p>
+          <p class="text-sm font-medium text-gray-600">Partidos Totales</p>
+          <p class="text-2xl font-bold text-gray-900">{totalPartidos}</p>
         </div>
       </div>
       <div class="mt-4">
         <div class="flex items-center">
-          <span class="text-green-500 text-sm font-medium">↑ 15%</span>
-          <span class="text-gray-500 text-sm ml-2">vs mes anterior</span>
+          <span class="text-purple-500 text-sm font-medium">{partidosEsteAno} este año</span>
+          <span class="text-gray-500 text-sm ml-2">• {recentMatches.length} recientes</span>
         </div>
       </div>
     </div>
@@ -120,14 +165,14 @@ const playersThisMonth = players.filter(player => {
           </svg>
         </div>
         <div>
-          <p class="text-sm font-medium text-gray-600">Patrocinadores</p>
-          <p class="text-2xl font-bold text-gray-900">{stats.sponsors}</p>
+          <p class="text-sm font-medium text-gray-600">Estados Jugadores</p>
+          <p class="text-2xl font-bold text-gray-900">{jugadoresPorEstado.pendiente}</p>
         </div>
       </div>
       <div class="mt-4">
         <div class="flex items-center">
-          <span class="text-green-500 text-sm font-medium">↑ 4%</span>
-          <span class="text-gray-500 text-sm ml-2">vs mes anterior</span>
+          <span class="text-yellow-500 text-sm font-medium">Pendientes</span>
+          <span class="text-gray-500 text-sm ml-2">• {jugadoresPorEstado.rechazado} rechazados</span>
         </div>
       </div>
     </div>
@@ -139,14 +184,21 @@ const playersThisMonth = players.filter(player => {
     <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
       <h2 class="text-lg font-semibold text-gray-900 mb-4">Torneos Activos</h2>
       <div class="space-y-4">
-        {activeTournaments.map((tournament) => (
+        {activeTournaments.length > 0 ? activeTournaments.map((tournament) => (
           <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
             <div>
-              <h3 class="font-medium text-gray-900">{tournament.name}</h3>
-              <p class="text-sm text-gray-500">{tournament.date}</p>
+              <h3 class="font-medium text-gray-900">{tournament.titulo}</h3>
+              <p class="text-sm text-gray-500">{tournament.fechas} - {tournament.lugar}</p>
+              <p class="text-xs text-gray-400">{tournament.anio}</p>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">Activo</span>
+              <span class={`px-2 py-1 text-xs font-medium rounded-full ${
+                tournament.estado === 'inscripciones-abiertas' 
+                  ? 'text-green-800 bg-green-100' 
+                  : 'text-blue-800 bg-blue-100'
+              }`}>
+                {tournament.estado === 'inscripciones-abiertas' ? 'Inscripciones Abiertas' : 'En Juego'}
+              </span>
               <a href={`/admin/torneos/editar/${tournament.id}`} class="text-blue-600 hover:text-blue-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
@@ -154,7 +206,11 @@ const playersThisMonth = players.filter(player => {
               </a>
             </div>
           </div>
-        ))}
+        )) : (
+          <div class="text-center py-8 text-gray-500">
+            <p>No hay torneos activos en este momento</p>
+          </div>
+        )}
       </div>
     </div>
 
@@ -162,93 +218,134 @@ const playersThisMonth = players.filter(player => {
     <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
       <h2 class="text-lg font-semibold text-gray-900 mb-4">Últimos Jugadores Registrados</h2>
       <div class="overflow-hidden">
-        <table class="min-w-full">
-          <thead>
-            <tr class="border-b border-gray-200">
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
+        {recentPlayers.length > 0 ? (
+          <div class="space-y-3">
             {recentPlayers.map((player) => (
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{player.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{player.category}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{player.email}</td>
-              </tr>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div>
+                  <h4 class="font-medium text-gray-900">{player.nombre} {player.apellido}</h4>
+                  <p class="text-sm text-gray-500">{player.categoria} - {player.torneo}</p>
+                  <p class="text-xs text-gray-400">{player.email || 'Sin email'}</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class={`px-2 py-1 text-xs font-medium rounded-full ${
+                    player.estado === 'inscrito' 
+                      ? 'text-green-800 bg-green-100'
+                      : player.estado === 'pendiente'
+                      ? 'text-yellow-800 bg-yellow-100'
+                      : 'text-red-800 bg-red-100'
+                  }`}>
+                    {player.estado === 'inscrito' ? 'Inscrito' : 
+                     player.estado === 'pendiente' ? 'Pendiente' : 'Rechazado'}
+                  </span>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        ) : (
+          <div class="text-center py-8 text-gray-500">
+            <p>No hay jugadores registrados</p>
+          </div>
+        )}
       </div>
     </div>
   </div>
 
-  <!-- Últimos Contactos -->
+  <!-- Últimos Partidos -->
   <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-8">
-    <h2 class="text-lg font-semibold text-gray-900 mb-4">Mensajes Recientes</h2>
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Últimos Partidos</h2>
     <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200">
-        <thead>
-          <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mensaje</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-          {contactRecords.map(record => (
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{record.name}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.email}</td>
-              <td class="px-6 py-4 text-sm text-gray-500">{record.message}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {new Date(record.date).toLocaleDateString()}
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 py-1 text-xs font-medium text-yellow-800 bg-yellow-100 rounded-full">
-                  Pendiente
-                </span>
-              </td>
-            </tr>
+      {recentMatches.length > 0 ? (
+        <div class="space-y-3">
+          {recentMatches.map(partido => (
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div class="flex-1">
+                <div class="flex items-center space-x-4">
+                  <div class="text-center">
+                    <p class="font-medium text-gray-900">{partido.jugador1}</p>
+                    <p class="text-xs text-gray-500">vs</p>
+                    <p class="font-medium text-gray-900">{partido.jugador2}</p>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm font-medium text-gray-700">{partido.torneo}</p>
+                    <p class="text-xs text-gray-500">{partido.categoria}</p>
+                    <p class="text-xs text-gray-400">{new Date(partido.fecha).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                {partido.resultado ? (
+                  <div class="text-sm font-medium text-gray-900">
+                    <p>{partido.resultado}</p>
+                    <span class="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">
+                      Finalizado
+                    </span>
+                  </div>
+                ) : (
+                  <span class="px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full">
+                    Programado
+                  </span>
+                )}
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      ) : (
+        <div class="text-center py-8 text-gray-500">
+          <p>No hay partidos registrados</p>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Estadísticas por Categoría -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Jugadores por Categoría</h2>
+      <div class="space-y-3">
+        {Object.entries(jugadoresPorCategoria).map(([categoria, cantidad]) => (
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-700">{categoria}</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div 
+                  class="bg-blue-600 h-2 rounded-full" 
+                  style={`width: ${(cantidad / totalJugadores) * 100}%`}
+                ></div>
+              </div>
+              <span class="text-sm font-bold text-gray-900">{cantidad}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Estados de Inscripción</h2>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+          <div class="flex items-center space-x-3">
+            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span class="font-medium text-green-900">Inscritos</span>
+          </div>
+          <span class="text-xl font-bold text-green-900">{jugadoresPorEstado.inscrito}</span>
+        </div>
+        <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+          <div class="flex items-center space-x-3">
+            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <span class="font-medium text-yellow-900">Pendientes</span>
+          </div>
+          <span class="text-xl font-bold text-yellow-900">{jugadoresPorEstado.pendiente}</span>
+        </div>
+        <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+          <div class="flex items-center space-x-3">
+            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span class="font-medium text-red-900">Rechazados</span>
+          </div>
+          <span class="text-xl font-bold text-red-900">{jugadoresPorEstado.rechazado}</span>
+        </div>
+      </div>
     </div>
   </div>
   
-  <!-- Scripts para gráficos y funcionalidad -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Eliminar torneos
-    document.querySelectorAll('.delete-tournament').forEach(button => {
-      button.addEventListener('click', async (e) => {
-        const tournamentId = e.target.dataset.id;
-        if (confirm('¿Estás seguro de que deseas eliminar este torneo?')) {
-          try {
-            const response = await fetch(`/api/torneos/delete/${tournamentId}`, {
-              method: 'DELETE',
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-            
-            if (response.ok) {
-              alert('Torneo eliminado correctamente');
-              window.location.reload();
-            } else {
-              const error = await response.json();
-              alert(error.message || 'Error al eliminar el torneo');
-            }
-          } catch (error) {
-            console.error('Error:', error);
-            alert('Error de conexión al servidor');
-          }
-        }
-      });
-    });
-  </script>
-</AdminLayout>
 </AdminLayout>

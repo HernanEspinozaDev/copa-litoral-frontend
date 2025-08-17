@@ -1,10 +1,12 @@
 ---
 import AdminLayout from '@layouts/AdminLayout.astro';
+import Toast from '@components/Toast.astro';
 import { promises as fs } from 'fs';
 import path from 'path';
+import torneosData from '../../../lib/data/torneos.json';
 
 const categories = ["1ª Categoría", "2ª Categoría", "3ª Categoría", "4ª Categoría"];
-const dataFilePath = path.resolve(process.cwd(), 'src/data/tournaments.json');
+const dataFilePath = path.resolve(process.cwd(), 'src/lib/data/torneos.json');
 
 if (Astro.request.method === 'POST') {
   try {
@@ -37,11 +39,10 @@ if (Astro.request.method === 'POST') {
       fechaLimiteInscripcion: formData.get('fechaLimiteInscripcion') as string,
     };
 
-    const fileContent = await fs.readFile(dataFilePath, 'utf-8');
-    const tournaments = JSON.parse(fileContent);
+    const tournaments = [...torneosData];
 
     if (tournaments.some(t => t.id === newTournament.id)) {
-      // Handle error, maybe render the form again with an error message
+      console.error('Tournament with this ID already exists');
     } else {
       tournaments.push(newTournament);
       await fs.writeFile(dataFilePath, JSON.stringify(tournaments, null, 2));
@@ -54,29 +55,42 @@ if (Astro.request.method === 'POST') {
 }
 ---
 
-<AdminLayout>
-  <slot name="title" slot="title">Nuevo Torneo - Copa Litoral</slot>
-  <slot name="description" slot="description">Crear un nuevo torneo con información detallada</slot>
+<AdminLayout title="Nuevo Torneo" description="Crear un nuevo torneo con información detallada">
   
+  <div class="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 mb-8 text-white">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-4xl font-bold mb-2">Crear Nuevo Torneo</h1>
+        <p class="text-orange-100">Configura un nuevo torneo con toda la información necesaria</p>
+      </div>
+    </div>
+  </div>
+
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6 text-primary">Crear Nuevo Torneo</h1>
     
-    <form method="POST" class="bg-white p-8 rounded-2xl shadow-lg space-y-8">
+    <form method="POST" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 space-y-8" id="tournamentForm" novalidate>
       <!-- Form fields remain the same -->
-      <div class="p-6 border rounded-xl">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800">Información General</h2>
+      <div class="bg-gray-50 rounded-xl p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Información General
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="col-span-2">
-            <label for="titulo" class="block text-gray-700 font-bold mb-2">Título del Torneo</label>
-            <input type="text" id="titulo" name="titulo" placeholder="Ej: Copa Litoral 2025" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="titulo" class="block text-gray-700 font-semibold mb-2">Título del Torneo</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ej: Copa Litoral 2025" required minlength="5" maxlength="100" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+            <div class="error-message hidden text-red-500 text-sm mt-1" id="titulo-error">El título debe tener entre 5 y 100 caracteres</div>
           </div>
           <div>
-            <label for="anio" class="block text-gray-700 font-bold mb-2">Año</label>
-            <input type="number" id="anio" name="anio" placeholder="Ej: 2025" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="anio" class="block text-gray-700 font-semibold mb-2">Año</label>
+            <input type="number" id="anio" name="anio" placeholder="Ej: 2025" required min="2023" max="2030" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+            <div class="error-message hidden text-red-500 text-sm mt-1" id="anio-error">El año debe estar entre 2023 y 2030</div>
           </div>
           <div>
-            <label for="estado" class="block text-gray-700 font-bold mb-2">Estado del Torneo</label>
-            <select id="estado" name="estado" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <label for="estado" class="block text-gray-700 font-semibold mb-2">Estado del Torneo</label>
+            <select id="estado" name="estado" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
               <option value="proximamente">Próximamente</option>
               <option value="inscripciones-abiertas">Inscripciones Abiertas</option>
               <option value="en-juego">En Juego</option>
@@ -84,72 +98,90 @@ if (Astro.request.method === 'POST') {
             </select>
           </div>
           <div class="col-span-2">
-            <label for="lugar" class="block text-gray-700 font-bold mb-2">Lugar</label>
-            <input type="text" id="lugar" name="lugar" placeholder="Ej: Club de Tenis Montemar, San Antonio" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="lugar" class="block text-gray-700 font-semibold mb-2">Lugar</label>
+            <input type="text" id="lugar" name="lugar" placeholder="Ej: Club de Tenis Montemar, San Antonio" required minlength="5" maxlength="200" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+            <div class="error-message hidden text-red-500 text-sm mt-1" id="lugar-error">El lugar debe tener entre 5 y 200 caracteres</div>
           </div>
           <div>
-            <label for="fechaInicio" class="block text-gray-700 font-bold mb-2">Fecha de Inicio</label>
-            <input type="date" id="fechaInicio" name="fechaInicio" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="fechaInicio" class="block text-gray-700 font-semibold mb-2">Fecha de Inicio</label>
+            <input type="date" id="fechaInicio" name="fechaInicio" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+            <div class="error-message hidden text-red-500 text-sm mt-1" id="fechaInicio-error">Selecciona una fecha de inicio válida</div>
           </div>
           <div>
-            <label for="fechaFin" class="block text-gray-700 font-bold mb-2">Fecha de Fin</label>
-            <input type="date" id="fechaFin" name="fechaFin" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="fechaFin" class="block text-gray-700 font-semibold mb-2">Fecha de Fin</label>
+            <input type="date" id="fechaFin" name="fechaFin" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+            <div class="error-message hidden text-red-500 text-sm mt-1" id="fechaFin-error">La fecha de fin debe ser posterior a la fecha de inicio</div>
           </div>
         </div>
       </div>
 
-      <div class="p-6 border rounded-xl">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800">Categorías y Formato</h2>
+      <div class="bg-blue-50 rounded-xl p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-2 0h-4m-2 0h-4m-2 0H3m2-2V7a2 2 0 012-2h10a2 2 0 012 2v12M9 7h6m-6 4h6m-6 4h6" />
+          </svg>
+          Categorías y Formato
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label class="block text-gray-700 font-bold mb-2">Categorías Disponibles</label>
-            <div id="categorias-container" class="p-2 border rounded-lg">
+            <label class="block text-gray-700 font-semibold mb-2">Categorías Disponibles</label>
+            <div id="categorias-container" class="p-3 border border-gray-300 rounded-xl bg-white">
               {categories.map(cat => (
                 <label class="flex items-center p-2 hover:bg-gray-100 rounded-md">
-                  <input type="checkbox" name="categorias" value={cat} class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"/>
+                  <input type="checkbox" name="categorias" value={cat} class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"/>
                   <span class="ml-3 text-gray-700">{cat}</span>
                 </label>
               ))}
             </div>
           </div>
           <div>
-            <label for="formato" class="block text-gray-700 font-bold mb-2">Formato del Torneo</label>
-            <textarea id="formato" name="formato" rows="4" placeholder="Ej: Sistema de grupos + semifinales" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            <label for="formato" class="block text-gray-700 font-semibold mb-2">Formato del Torneo</label>
+            <textarea id="formato" name="formato" rows="4" placeholder="Ej: Sistema de grupos + semifinales" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"></textarea>
           </div>
         </div>
       </div>
 
-      <div class="p-6 border rounded-xl">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800">Inscripciones</h2>
+      <div class="bg-green-50 rounded-xl p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          </svg>
+          Inscripciones
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="precioSocios" class="block text-gray-700 font-bold mb-2">Precio Socios ($)</label>
-            <input type="number" id="precioSocios" name="precioSocios" placeholder="18000" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="precioSocios" class="block text-gray-700 font-semibold mb-2">Precio Socios ($)</label>
+            <input type="number" id="precioSocios" name="precioSocios" placeholder="18000" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all" />
           </div>
           <div>
-            <label for="precioGeneral" class="block text-gray-700 font-bold mb-2">Precio General ($)</label>
-            <input type="number" id="precioGeneral" name="precioGeneral" placeholder="23000" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="precioGeneral" class="block text-gray-700 font-semibold mb-2">Precio General ($)</label>
+            <input type="number" id="precioGeneral" name="precioGeneral" placeholder="23000" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all" />
           </div>
           <div class="col-span-2">
-            <label for="fechaLimiteInscripcion" class="block text-gray-700 font-bold mb-2">Fecha Límite de Inscripción</label>
-            <input type="date" id="fechaLimiteInscripcion" name="fechaLimiteInscripcion" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+            <label for="fechaLimiteInscripcion" class="block text-gray-700 font-semibold mb-2">Fecha Límite de Inscripción</label>
+            <input type="date" id="fechaLimiteInscripcion" name="fechaLimiteInscripcion" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all" />
           </div>
         </div>
       </div>
 
-      <div class="p-6 border rounded-xl">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800">Bases del Torneo</h2>
+      <div class="bg-purple-50 rounded-xl p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Bases del Torneo
+        </h3>
         <div>
-          <label for="bases" class="block text-gray-700 font-bold mb-2">Contenido de las Bases</label>
-          <textarea id="bases" name="bases" rows="10" placeholder="Copia y pega las bases del torneo aquí..." required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+          <label for="bases" class="block text-gray-700 font-semibold mb-2">Contenido de las Bases</label>
+          <textarea id="bases" name="bases" rows="10" placeholder="Copia y pega las bases del torneo aquí..." required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"></textarea>
         </div>
       </div>
       
       <div class="flex justify-end space-x-4 pt-4">
-        <a href="/admin/torneos" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition duration-300">
+        <a href="/admin/torneos" class="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-200">
           Cancelar
         </a>
-        <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+        <button type="submit" class="px-8 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl">
           Crear Torneo
         </button>
       </div>
@@ -157,43 +189,186 @@ if (Astro.request.method === 'POST') {
   </div>
   
   <script>
-    // Client-side validation script remains the same
-    const anioInput = document.getElementById('anio');
-    const fechaInicioInput = document.getElementById('fechaInicio');
-    const fechaFinInput = document.getElementById('fechaFin');
-    const fechaLimiteInscripcionInput = document.getElementById('fechaLimiteInscripcion');
+    document.addEventListener('DOMContentLoaded', () => {
+      const anioInput = document.getElementById('anio');
+      const fechaInicioInput = document.getElementById('fechaInicio');
+      const fechaFinInput = document.getElementById('fechaFin');
+      const fechaLimiteInscripcionInput = document.getElementById('fechaLimiteInscripcion');
 
-    function setMinDateForDeadline() {
-      const today = new Date().toISOString().split('T')[0];
-      fechaLimiteInscripcionInput.min = today;
-    }
-
-    function updateDateLimits() {
-      const year = anioInput.value;
-      if (year) {
-        fechaInicioInput.min = `${year}-01-01`;
-        fechaInicioInput.max = `${year}-12-31`;
-        fechaFinInput.min = `${year}-01-01`;
-        fechaFinInput.max = `${year}-12-31`;
-      } else {
-        fechaInicioInput.min = null;
-        fechaInicioInput.max = null;
-        fechaFinInput.min = null;
-        fechaFinInput.max = null;
+      function setMinDateForDeadline() {
+        const today = new Date().toISOString().split('T')[0];
+        if (fechaLimiteInscripcionInput) {
+          fechaLimiteInscripcionInput.min = today;
+        }
       }
-    }
 
-    anioInput.addEventListener('change', updateDateLimits);
-    fechaInicioInput.addEventListener('change', () => {
-      if (fechaInicioInput.value) {
-        fechaFinInput.min = fechaInicioInput.value;
-        const startDate = new Date(fechaInicioInput.value + 'T00:00:00');
-        startDate.setDate(startDate.getDate() - 1);
-        fechaLimiteInscripcionInput.max = startDate.toISOString().split('T')[0];
+      function updateDateLimits() {
+        const year = anioInput.value;
+        if (year) {
+          fechaInicioInput.min = `${year}-01-01`;
+          fechaInicioInput.max = `${year}-12-31`;
+          fechaFinInput.min = `${year}-01-01`;
+          fechaFinInput.max = `${year}-12-31`;
+        } else {
+          fechaInicioInput.min = null;
+          fechaInicioInput.max = null;
+          fechaFinInput.min = null;
+          fechaFinInput.max = null;
+        }
       }
+
+      anioInput.addEventListener('change', updateDateLimits);
+      fechaInicioInput.addEventListener('change', () => {
+        if (fechaInicioInput.value) {
+          fechaFinInput.min = fechaInicioInput.value;
+          if (fechaLimiteInscripcionInput) {
+            const startDate = new Date(fechaInicioInput.value + 'T00:00:00');
+            startDate.setDate(startDate.getDate() - 1);
+            fechaLimiteInscripcionInput.max = startDate.toISOString().split('T')[0];
+          }
+        }
+      });
+
+      updateDateLimits();
+      setMinDateForDeadline();
+
+      // Form validation
+      const form = document.getElementById('tournamentForm');
+      const fields = ['titulo', 'anio', 'lugar', 'fechaInicio', 'fechaFin'];
+
+      function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = document.getElementById(fieldId + '-error');
+        field.classList.add('border-red-500', 'focus:ring-red-500');
+        field.classList.remove('border-gray-300', 'focus:ring-orange-500');
+        if (errorDiv) {
+          errorDiv.textContent = message;
+          errorDiv.classList.remove('hidden');
+        }
+      }
+
+      function hideError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = document.getElementById(fieldId + '-error');
+        field.classList.remove('border-red-500', 'focus:ring-red-500');
+        field.classList.add('border-gray-300', 'focus:ring-orange-500');
+        if (errorDiv) {
+          errorDiv.classList.add('hidden');
+        }
+      }
+
+      function validateField(fieldId) {
+        const field = document.getElementById(fieldId);
+        const value = field.value.trim();
+
+        switch (fieldId) {
+          case 'titulo':
+            if (!value) {
+              showError(fieldId, 'El título es obligatorio');
+              return false;
+            }
+            if (value.length < 5) {
+              showError(fieldId, 'El título debe tener al menos 5 caracteres');
+              return false;
+            }
+            if (value.length > 100) {
+              showError(fieldId, 'El título no puede exceder 100 caracteres');
+              return false;
+            }
+            break;
+
+          case 'anio':
+            if (!value) {
+              showError(fieldId, 'El año es obligatorio');
+              return false;
+            }
+            const year = parseInt(value);
+            if (year < 2023 || year > 2030) {
+              showError(fieldId, 'El año debe estar entre 2023 y 2030');
+              return false;
+            }
+            break;
+
+          case 'lugar':
+            if (!value) {
+              showError(fieldId, 'El lugar es obligatorio');
+              return false;
+            }
+            if (value.length < 5) {
+              showError(fieldId, 'El lugar debe tener al menos 5 caracteres');
+              return false;
+            }
+            if (value.length > 200) {
+              showError(fieldId, 'El lugar no puede exceder 200 caracteres');
+              return false;
+            }
+            break;
+
+          case 'fechaInicio':
+            if (!value) {
+              showError(fieldId, 'La fecha de inicio es obligatoria');
+              return false;
+            }
+            const startDate = new Date(value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (startDate < today) {
+              showError(fieldId, 'La fecha de inicio no puede ser anterior a hoy');
+              return false;
+            }
+            break;
+
+          case 'fechaFin':
+            if (!value) {
+              showError(fieldId, 'La fecha de fin es obligatoria');
+              return false;
+            }
+            const endDate = new Date(value);
+            const startDateValue = document.getElementById('fechaInicio').value;
+            if (startDateValue) {
+              const startDateCheck = new Date(startDateValue);
+              if (endDate <= startDateCheck) {
+                showError(fieldId, 'La fecha de fin debe ser posterior a la fecha de inicio');
+                return false;
+              }
+            }
+            break;
+        }
+
+        hideError(fieldId);
+        return true;
+      }
+
+      // Add real-time validation
+      fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('blur', () => validateField(fieldId));
+        field.addEventListener('input', () => {
+          if (field.classList.contains('border-red-500')) {
+            validateField(fieldId);
+          }
+        });
+      });
+
+      // Form submission validation
+      form.addEventListener('submit', (e) => {
+        let isValid = true;
+        
+        fields.forEach(fieldId => {
+          if (!validateField(fieldId)) {
+            isValid = false;
+          }
+        });
+
+        if (!isValid) {
+          e.preventDefault();
+          const firstError = form.querySelector('.border-red-500');
+          if (firstError) {
+            firstError.focus();
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
     });
-
-    updateDateLimits();
-    setMinDateForDeadline();
   </script>
 </AdminLayout>

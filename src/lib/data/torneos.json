@@ -1,0 +1,327 @@
+[
+  {
+    "id": "copa-litoral-2025",
+    "titulo": "Copa Litoral 2025",
+    "descripcion": "Torneo principal de la Copa Litoral",
+    "lugar": "Club de Tenis Montemar, San Antonio",
+    "fechas": "Del 28 de mayo al 15 de junio",
+    "fechaInicio": "2025-05-28",
+    "fechaFin": "2025-06-15",
+    "anio": 2025,
+    "estado": "inscripciones-abiertas",
+    "formato": "Sistema de grupos + semifinales",
+    "fechaLimiteInscripcion": "2025-05-25",
+    "bases": "BASES COPA LITORAL 2025...",
+    "imageUrl": "/torneo1.jpg",
+    "categorias": [
+      {
+        "id": "cat-001",
+        "nombre": "1ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 8,
+        "precio": {
+          "socio": 18000,
+          "general": 23000
+        }
+      },
+      {
+        "id": "cat-002",
+        "nombre": "2ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 6,
+        "precio": {
+          "socio": 18000,
+          "general": 23000
+        }
+      },
+      {
+        "id": "cat-003",
+        "nombre": "3ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 4,
+        "precio": {
+          "socio": 18000,
+          "general": 23000
+        }
+      },
+      {
+        "id": "cat-004",
+        "nombre": "4ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 3,
+        "precio": {
+          "socio": 18000,
+          "general": 23000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-verano-2025",
+    "titulo": "Copa Litoral Verano 2025",
+    "descripcion": "Torneo de verano para todas las categorías",
+    "lugar": "Club de Tenis Viña del Mar",
+    "fechas": "Del 10 al 25 de enero",
+    "fechaInicio": "2025-01-10",
+    "fechaFin": "2025-01-25",
+    "anio": 2025,
+    "estado": "inscripciones-abiertas",
+    "formato": "Sistema de grupos",
+    "fechaLimiteInscripcion": "2025-01-07",
+    "bases": "BASES COPA LITORAL VERANO 2025...",
+    "imageUrl": "/torneo2.jpg",
+    "categorias": [
+      {
+        "id": "cat-005",
+        "nombre": "1ª Categoría",
+        "maxJugadores": 16,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 20000,
+          "general": 25000
+        }
+      },
+      {
+        "id": "cat-006",
+        "nombre": "2ª Categoría",
+        "maxJugadores": 16,
+        "inscriptos": 10,
+        "precio": {
+          "socio": 20000,
+          "general": 25000
+        }
+      },
+      {
+        "id": "cat-007",
+        "nombre": "3ª Categoría",
+        "maxJugadores": 16,
+        "inscriptos": 8,
+        "precio": {
+          "socio": 20000,
+          "general": 25000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-juvenil-2025",
+    "titulo": "Copa Litoral Juvenil 2025",
+    "descripcion": "Torneo juvenil para las categorías Sub-14, Sub-16 y Sub-18",
+    "lugar": "Club de Tenis Quilpué",
+    "fechas": "Del 5 al 15 de febrero",
+    "fechaInicio": "2025-02-05",
+    "fechaFin": "2025-02-15",
+    "anio": 2025,
+    "estado": "proximamente",
+    "formato": "Eliminación directa",
+    "fechaLimiteInscripcion": "2025-02-02",
+    "bases": "BASES COPA LITORAL JUVENIL 2025...",
+    "imageUrl": "/torneo3.jpg",
+    "categorias": [
+      {
+        "id": "cat-008",
+        "nombre": "Sub-14",
+        "maxJugadores": 8,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      },
+      {
+        "id": "cat-009",
+        "nombre": "Sub-16",
+        "maxJugadores": 8,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      },
+      {
+        "id": "cat-010",
+        "nombre": "Sub-18",
+        "maxJugadores": 8,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-masters-2025",
+    "titulo": "Copa Litoral Masters 2025",
+    "descripcion": "Torneo para jugadores masters (+35, +45, +55 años)",
+    "lugar": "Club de Tenis La Serena",
+    "fechas": "Del 20 al 30 de abril",
+    "fechaInicio": "2025-04-20",
+    "fechaFin": "2025-04-30",
+    "anio": 2025,
+    "estado": "proximamente",
+    "formato": "Sistema de grupos",
+    "fechaLimiteInscripcion": "2025-04-17",
+    "bases": "BASES COPA LITORAL MASTERS 2025...",
+    "imageUrl": "/torneo4.jpg",
+    "categorias": [
+      {
+        "id": "cat-011",
+        "nombre": "+35 años",
+        "maxJugadores": 12,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 20000,
+          "general": 28000
+        }
+      },
+      {
+        "id": "cat-012",
+        "nombre": "+45 años",
+        "maxJugadores": 12,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 20000,
+          "general": 28000
+        }
+      },
+      {
+        "id": "cat-013",
+        "nombre": "+55 años",
+        "maxJugadores": 12,
+        "inscriptos": 0,
+        "precio": {
+          "socio": 20000,
+          "general": 28000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-2024",
+    "titulo": "Copa Litoral 2024",
+    "descripcion": "Torneo principal de la Copa Litoral 2024",
+    "lugar": "Club de Tenis Montemar, San Antonio",
+    "fechas": "Del 20 de mayo al 8 de junio",
+    "fechaInicio": "2024-05-20",
+    "fechaFin": "2024-06-08",
+    "anio": 2024,
+    "estado": "finalizado",
+    "formato": "Sistema de grupos + semifinales",
+    "fechaLimiteInscripcion": "2024-05-17",
+    "bases": "BASES COPA LITORAL 2024...",
+    "imageUrl": "/torneo1.jpg",
+    "categorias": [
+      {
+        "id": "cat-014",
+        "nombre": "1ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 17000,
+          "general": 22000
+        }
+      },
+      {
+        "id": "cat-015",
+        "nombre": "2ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 17000,
+          "general": 22000
+        }
+      },
+      {
+        "id": "cat-016",
+        "nombre": "3ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 17000,
+          "general": 22000
+        }
+      },
+      {
+        "id": "cat-017",
+        "nombre": "4ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 17000,
+          "general": 22000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-2023",
+    "titulo": "Copa Litoral 2023",
+    "descripcion": "Torneo principal de la Copa Litoral 2023",
+    "lugar": "Club de Tenis Montemar, San Antonio",
+    "fechas": "Del 15 de mayo al 3 de junio",
+    "fechaInicio": "2023-05-15",
+    "fechaFin": "2023-06-03",
+    "anio": 2023,
+    "estado": "finalizado",
+    "formato": "Sistema de grupos",
+    "fechaLimiteInscripcion": "2023-05-12",
+    "bases": "BASES COPA LITORAL 2023...",
+    "imageUrl": "/torneo1.jpg",
+    "categorias": [
+      {
+        "id": "cat-018",
+        "nombre": "1ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      },
+      {
+        "id": "cat-019",
+        "nombre": "2ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      },
+      {
+        "id": "cat-020",
+        "nombre": "3ª Categoría",
+        "maxJugadores": 12,
+        "inscriptos": 12,
+        "precio": {
+          "socio": 15000,
+          "general": 20000
+        }
+      }
+    ]
+  },
+  {
+    "id": "copa-litoral-2026-2026",
+    "titulo": "Copa Litoral 2026",
+    "anio": 2026,
+    "lugar": "Cartagena",
+    "fechas": "Del 1 de enero al 7 de enero",
+    "fechaInicio": "2026-01-01",
+    "fechaFin": "2026-01-07",
+    "estado": "proximamente",
+    "categorias": [
+      "1ª Categoría",
+      "2ª Categoría",
+      "3ª Categoría",
+      "4ª Categoría"
+    ],
+    "totalJugadores": 0,
+    "formato": "gfhfy",
+    "precio": "$18000 socios / $23000 general",
+    "bases": "ffgn",
+    "precioSocios": "18000",
+    "precioGeneral": "23000",
+    "fechaLimiteInscripcion": "2025-08-31"
+  }
+]

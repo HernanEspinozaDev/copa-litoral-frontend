@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import fs from 'fs/promises';
 import path from 'path';
+import torneosData from '../../../lib/data/torneos.json';
 
 interface Tournament {
   id: string;
@@ -259,28 +260,27 @@ Coordinadores por Categoría
 
 // --- Helper functions for data access ---
 
-const DATA_PATH = path.join(process.cwd(), 'src', 'data', 'tournaments.json');
-
-/**
- * NOTE: The initialTournaments constant is quite large.
- * For better code organization, consider moving it to its own file,
- * e.g., `src/data/initial-data.ts`, and importing it here.
- */
+const DATA_PATH = path.join(process.cwd(), 'src', 'lib', 'data', 'torneos.json');
 
 async function getTournaments(): Promise<Tournament[]> {
   try {
-    const data = await fs.readFile(DATA_PATH, 'utf-8');
-    return JSON.parse(data);
+    // Use imported data for reading, fallback to file system for compatibility
+    return torneosData as any[];
   } catch (error: any) {
-    if (error.code === 'ENOENT') {
-      // File doesn't exist, create it with initial data
-      const dataDir = path.dirname(DATA_PATH);
-      await fs.mkdir(dataDir, { recursive: true });
-      await fs.writeFile(DATA_PATH, JSON.stringify(initialTournaments, null, 2));
-      return initialTournaments;
+    // Fallback to file system read if import fails
+    try {
+      const data = await fs.readFile(DATA_PATH, 'utf-8');
+      return JSON.parse(data);
+    } catch (fsError: any) {
+      if (fsError.code === 'ENOENT') {
+        // File doesn't exist, create it with initial data
+        const dataDir = path.dirname(DATA_PATH);
+        await fs.mkdir(dataDir, { recursive: true });
+        await fs.writeFile(DATA_PATH, JSON.stringify(initialTournaments, null, 2));
+        return initialTournaments;
+      }
+      throw fsError;
     }
-    // Re-throw other errors
-    throw error;
   }
 }
 

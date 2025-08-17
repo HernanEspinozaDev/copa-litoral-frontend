@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
 import { promises as fs } from 'fs';
 import path from 'path';
+import jugadoresData from '../../../lib/data/jugadores-completo.json';
 
-const dataFilePath = path.resolve(process.cwd(), 'src/data/players.json');
+const dataFilePath = path.resolve(process.cwd(), 'src/lib/data/jugadores-completo.json');
 
 export const DELETE: APIRoute = async ({ params }) => {
   try {
@@ -15,9 +16,8 @@ export const DELETE: APIRoute = async ({ params }) => {
       });
     }
 
-    // Read existing data
-    const fileContent = await fs.readFile(dataFilePath, 'utf-8');
-    let players = JSON.parse(fileContent);
+    // Use imported data for reading
+    let players = [...jugadoresData];
 
     // Filter out the player to delete
     const updatedPlayers = players.filter(p => p.id !== id);

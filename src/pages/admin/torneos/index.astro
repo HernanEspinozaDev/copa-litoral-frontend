@@ -1,8 +1,12 @@
 ---
+// src/pages/admin/torneos/index.astro
 import AdminLayout from '@layouts/AdminLayout.astro';
+import Toast from '@components/Toast.astro';
 
-const response = await fetch(`${Astro.url.origin}/api/tournaments-data`);
-const { data: allTournaments } = await response.json();
+// Read tournaments from the unified data source
+import torneosData from '../../../lib/data/torneos.json';
+
+const allTournaments = torneosData;
 
 const torneosPorAnio = allTournaments.reduce((acc, torneo) => {
   const anio = torneo.anio;
@@ -23,26 +27,30 @@ const statusMap = {
 };
 ---
 
-<AdminLayout>
-  <slot name="title" slot="title">Gestión de Torneos - Copa Litoral</slot>
+<AdminLayout title="Gestión de Torneos" description="Administra todos los torneos del sistema">
   
-  <div class="flex justify-between items-center mb-8">
-    <h1 class="text-3xl font-bold text-primary">Gestión de Torneos</h1>
-    <a href="/admin/torneos/nuevo" class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 inline-flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-      </svg>
-      Nuevo Torneo
-    </a>
+  <div class="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 mb-8 text-white">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-4xl font-bold mb-2">Gestión de Torneos</h1>
+        <p class="text-orange-100">Administra todos los torneos del sistema</p>
+      </div>
+      <a href="/admin/torneos/nuevo" class="bg-white text-orange-600 hover:bg-orange-50 font-semibold py-3 px-6 rounded-xl transition duration-300 inline-flex items-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Nuevo Torneo
+      </a>
+    </div>
   </div>
 
   <!-- Year Navigation -->
-  <section class="py-4 bg-slate-100 rounded-lg mb-6">
+  <section class="py-4 bg-gray-50 rounded-xl mb-6 border border-gray-100">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex flex-wrap gap-2" id="year-nav">
         {years.map((year, index) => (
           <button 
-            class={`year-btn px-4 py-2 rounded-lg font-medium ${index === 0 ? 'bg-blue-600 text-white' : 'bg-slate-300 text-slate-700'}`}
+            class={`year-btn px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${index === 0 ? 'bg-orange-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'}`}
             data-year={year}
           >
             {year}
@@ -57,11 +65,11 @@ const statusMap = {
       {torneosPorAnio[year].map(tournament => {
         const statusInfo = statusMap[tournament.estado] || statusMap.finalizado;
         return (
-        <div class="tournament-card bg-white rounded-xl shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+        <div class="tournament-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
           <div class="p-6">
             <div class="flex justify-between items-start">
               <div>
-                <h2 class="text-xl font-bold text-gray-900 mb-1">{tournament.titulo}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-1">{tournament.titulo}</h2>
                 <p class="text-sm text-gray-500">{tournament.lugar}</p>
               </div>
               <span class={`px-3 py-1 text-xs font-semibold rounded-full ${statusInfo.class}`}>
@@ -86,12 +94,20 @@ const statusMap = {
             </div>
           </div>
           
-          <div class="bg-gray-50 px-6 py-3 flex justify-end space-x-3">
-            <a href={`/admin/torneos/editar/${tournament.id}`} class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">Editar</a>
+          <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
+            <a href={`/admin/torneos/editar/${tournament.id}`} class="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 inline-flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              Editar
+            </a>
             <button 
               data-id={tournament.id}
-              class="delete-tournament text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
+              class="delete-tournament px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-all duration-200 inline-flex items-center"
             >
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
               Eliminar
             </button>
           </div>
@@ -111,11 +127,11 @@ const statusMap = {
 
           // Update button styles
           yearNav.querySelectorAll('.year-btn').forEach(btn => {
-            btn.classList.remove('bg-blue-600', 'text-white');
-            btn.classList.add('bg-slate-300', 'text-slate-700');
+            btn.classList.remove('bg-orange-600', 'text-white', 'shadow-lg');
+            btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'border', 'border-gray-200');
           });
-          e.target.classList.add('bg-blue-600', 'text-white');
-          e.target.classList.remove('bg-slate-300', 'text-slate-700');
+          e.target.classList.add('bg-orange-600', 'text-white', 'shadow-lg');
+          e.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'border', 'border-gray-200');
 
           // Show/hide tournaments
           document.querySelectorAll('.year-tournaments').forEach(div => {

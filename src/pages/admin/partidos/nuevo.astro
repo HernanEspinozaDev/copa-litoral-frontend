@@ -6,13 +6,11 @@ import { getTournaments } from '@lib/database';
 const tournaments = getTournaments();
 ---
 
-<AdminLayout>
-  <slot name="title" slot="title">Nuevo Partido - Copa Litoral</slot>
-  <slot name="description" slot="description">Registrar un nuevo partido</slot>
+<AdminLayout title="Nuevo Partido" description="Registrar un nuevo partido">
   
   <h1 class="text-3xl font-bold mb-6 text-primary">Nuevo Partido</h1>
   
-  <form id="matchForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+  <form id="matchForm" class="bg-white p-6 rounded-lg shadow-md max-w-2xl" novalidate>
     <div class="mb-4">
       <label for="tournamentId" class="block text-gray-700 font-bold mb-2">Torneo</label>
       <select id="tournamentId" name="tournamentId" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
@@ -21,26 +19,31 @@ const tournaments = getTournaments();
           <option value={tournament.id}>{tournament.name}</option>
         ))}
       </select>
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="tournamentId-error">Debes seleccionar un torneo</div>
     </div>
     
     <div class="mb-4">
       <label for="player1" class="block text-gray-700 font-bold mb-2">Jugador 1</label>
-      <input type="text" id="player1" name="player1" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <input type="text" id="player1" name="player1" required minlength="2" maxlength="100" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Nombre del jugador 1" />
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="player1-error">El nombre del jugador debe tener entre 2 y 100 caracteres</div>
     </div>
     
     <div class="mb-4">
       <label for="player2" class="block text-gray-700 font-bold mb-2">Jugador 2</label>
-      <input type="text" id="player2" name="player2" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <input type="text" id="player2" name="player2" required minlength="2" maxlength="100" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Nombre del jugador 2" />
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="player2-error">El nombre del jugador debe tener entre 2 y 100 caracteres</div>
     </div>
     
     <div class="mb-4">
       <label for="date" class="block text-gray-700 font-bold mb-2">Fecha</label>
       <input type="date" id="date" name="date" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="date-error">Selecciona una fecha válida</div>
     </div>
     
     <div class="mb-4">
       <label for="result" class="block text-gray-700 font-bold mb-2">Resultado</label>
-      <input type="text" id="result" name="result" placeholder="Ej: 6-4, 6-3" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <input type="text" id="result" name="result" placeholder="Ej: 6-4, 6-3" pattern="^([0-9]+-[0-9]+)(,\s*[0-9]+-[0-9]+)*$" maxlength="50" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+      <div class="error-message hidden text-red-500 text-sm mt-1" id="result-error">Formato inválido. Usa el formato: 6-4, 6-3</div>
     </div>
     
     <div class="flex space-x-4">
@@ -54,36 +57,164 @@ const tournaments = getTournaments();
   </form>
   
   <script>
-    document.getElementById('matchForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(e.target);
-      const data = {
-        tournamentId: formData.get('tournamentId'),
-        player1: formData.get('player1'),
-        player2: formData.get('player2'),
-        date: formData.get('date'),
-        result: formData.get('result') || 'Pendiente'
-      };
-      
-      try {
-        const response = await fetch('/api/partidos/create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-        
-        if (response.ok) {
-          alert('Partido creado correctamente');
-          window.location.href = '/admin/partidos';
-        } else {
-          alert('Error al crear el partido');
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('matchForm');
+      const fields = ['tournamentId', 'player1', 'player2', 'date', 'result'];
+
+      function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = document.getElementById(fieldId + '-error');
+        field.classList.add('border-red-500', 'focus:ring-red-500');
+        field.classList.remove('border-gray-300', 'focus:ring-primary');
+        if (errorDiv) {
+          errorDiv.textContent = message;
+          errorDiv.classList.remove('hidden');
         }
-      } catch (error) {
-        alert('Error de conexión: ' + error.message);
       }
+
+      function hideError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = document.getElementById(fieldId + '-error');
+        field.classList.remove('border-red-500', 'focus:ring-red-500');
+        field.classList.add('border-gray-300', 'focus:ring-primary');
+        if (errorDiv) {
+          errorDiv.classList.add('hidden');
+        }
+      }
+
+      function validateField(fieldId) {
+        const field = document.getElementById(fieldId);
+        const value = field.value.trim();
+
+        switch (fieldId) {
+          case 'tournamentId':
+            if (!value) {
+              showError(fieldId, 'Debes seleccionar un torneo');
+              return false;
+            }
+            break;
+
+          case 'player1':
+          case 'player2':
+            if (!value) {
+              showError(fieldId, 'El nombre del jugador es obligatorio');
+              return false;
+            }
+            if (value.length < 2) {
+              showError(fieldId, 'El nombre debe tener al menos 2 caracteres');
+              return false;
+            }
+            if (value.length > 100) {
+              showError(fieldId, 'El nombre no puede exceder 100 caracteres');
+              return false;
+            }
+            // Check if players are different
+            if (fieldId === 'player2') {
+              const player1Value = document.getElementById('player1').value.trim();
+              if (player1Value && value.toLowerCase() === player1Value.toLowerCase()) {
+                showError(fieldId, 'Los jugadores deben ser diferentes');
+                return false;
+              }
+            }
+            break;
+
+          case 'date':
+            if (!value) {
+              showError(fieldId, 'La fecha es obligatoria');
+              return false;
+            }
+            const selectedDate = new Date(value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            selectedDate.setHours(0, 0, 0, 0);
+            if (selectedDate < today) {
+              showError(fieldId, 'La fecha no puede ser anterior a hoy');
+              return false;
+            }
+            break;
+
+          case 'result':
+            if (value && value.length > 0) {
+              const resultPattern = /^([0-9]+-[0-9]+)(,\s*[0-9]+-[0-9]+)*$/;
+              if (!resultPattern.test(value)) {
+                showError(fieldId, 'Formato inválido. Usa el formato: 6-4, 6-3');
+                return false;
+              }
+            }
+            break;
+        }
+
+        hideError(fieldId);
+        return true;
+      }
+
+      // Add real-time validation
+      fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('blur', () => validateField(fieldId));
+        field.addEventListener('input', () => {
+          if (field.classList.contains('border-red-500')) {
+            validateField(fieldId);
+          }
+        });
+      });
+
+      // Special validation for player name uniqueness
+      document.getElementById('player1').addEventListener('input', () => {
+        const player2Field = document.getElementById('player2');
+        if (player2Field.classList.contains('border-red-500')) {
+          validateField('player2');
+        }
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Validate all fields
+        let isValid = true;
+        fields.forEach(fieldId => {
+          if (!validateField(fieldId)) {
+            isValid = false;
+          }
+        });
+
+        if (!isValid) {
+          const firstError = form.querySelector('.border-red-500');
+          if (firstError) {
+            firstError.focus();
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+        
+        const formData = new FormData(e.target);
+        const data = {
+          tournamentId: formData.get('tournamentId'),
+          player1: formData.get('player1'),
+          player2: formData.get('player2'),
+          date: formData.get('date'),
+          result: formData.get('result') || 'Pendiente'
+        };
+        
+        try {
+          const response = await fetch('/api/partidos/create', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          if (response.ok) {
+            alert('Partido creado correctamente');
+            window.location.href = '/admin/partidos';
+          } else {
+            alert('Error al crear el partido');
+          }
+        } catch (error) {
+          alert('Error de conexión: ' + error.message);
+        }
+      });
     });
   </script>
 </AdminLayout>
