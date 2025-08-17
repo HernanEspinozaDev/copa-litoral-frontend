@@ -1,28 +1,39 @@
 # Dependencies
-node_modules/
+node_modules
 
-# Build output
+# Astro
 dist/
-.output/
 .astro/
 
 # Environment variables
 .env
 .env.*
+!/.env.example
 
-# Client sensitive data
-src/data/*.json
-src/lib/database.ts
+# Sensitive configuration
+# Add your own database and auth credentials in these files.
+# They are not versioned for security.
 src/lib/auth.ts
+src/lib/database.ts
 
-# Editor and OS files
-.vscode/
-.DS_Store
-.idea/
+# Data files
+# Ignoring json data files inside src/data
+src/data/*.json
 
-# Generated files
-GEMINI.md
+# Local output files
+data_count.txt
+data_output.txt
+debug_output.txt
+tournaments_output.txt
 
-# Docker files
-Dockerfile
-docker-compose.yml
+# Log files
+*.log
+
+# Debug and test scripts
+debug-api.js
+debug-data.py
+test-api.js
+test-login-api.html
+test-login.cjs
+test-login.js
+test-sistema.js
